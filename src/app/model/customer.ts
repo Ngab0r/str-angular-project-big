@@ -1,4 +1,4 @@
-import { Address } from 'src/model/address';
+import { Address } from 'src/app/model/address';
 
 export class CustomerSimple {
     id:number = 0;
