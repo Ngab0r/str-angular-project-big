@@ -1,6 +1,8 @@
 export class Product {
     id: number = 0;
     name: string = '';
+    title: string = '';
+    year: number = 0;
     type: string = '';
     catID: number = 0;
     description: string = '';
@@ -9,4 +11,4 @@ export class Product {
     active: boolean;
 }
 
-// id, name, type, catID, description, price, featured, active
+// id, name, title, year, type, catID, description, price, featured, active
