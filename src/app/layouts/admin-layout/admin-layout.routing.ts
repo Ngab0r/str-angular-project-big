@@ -11,6 +11,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
 import { TestComponent } from '../../test/test.component'
 import { ProductComponent } from 'app/product/product.component';
+import { BillComponent } from 'app/bill/bill.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -57,6 +58,7 @@ export const AdminLayoutRoutes: Routes = [
     // }
     { path: 'test', component: TestComponent },
     { path: 'product', component: ProductComponent },
+    { path: 'bill', component: BillComponent },
 
     { path: 'dashboard', component: DashboardComponent },
     { path: 'user-profile', component: UserProfileComponent },
