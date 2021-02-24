@@ -1,35 +1,53 @@
-<p>product works!</p>
-<div class="row">
-    <div class="col-4 offset-8 mt-4 mb-4">
-      <input [(ngModel)]="phrase" type="text" class="form-control">
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-12">
-      <table class="table table-striped">
-        <thead>
-          <th>id</th>
-          <th>zip</th>
-          <th>country</th>
-          <th>city</th>
-        </thead>
-        <tbody>
-          <!-- 2. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title ">Simple Table</h4>
+            <p class="card-category"> Here is a subtitle for this table</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>id</th>
+                  <th>name</th>
+                  <th>title</th>
+                  <th>year</th>
+                  <th>type</th>
+                  <th>catID</th>
+                  <th>description</th>
+                  <th>price</th>
+                  <th>featured</th>
+                  <th>active</th>
+                </thead>
+                <tbody>
+                  <!-- 2. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez
               addressList$ a product.component.ts-ben van
           -->
-              <tr *ngFor="let address of addressList$ | async  "> 
-          
-          <!-- 2. - Observable 
-            <tr *ngFor="let address of addressList | async  ">
+                  <tr *ngFor="let product of productList$ | async  ">
+
+                    <!-- 2. - Observable 
+            <tr *ngFor="let product of productList | async  ">
           -->
-            <td>{{ address.id }}</td>
-            <td>{{ address.zip }}</td>
-            <td>{{ address.country }}</td>
-            <td>{{ address.city }}</td>
-        </tr>
-        </tbody>
-      </table>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.year }}</td>
+                    <td>{{ product.type }}</td>
+                    <td>{{ product.catID }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.featured }}</td>
+                    <td>{{ product.active }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  
+</div>
