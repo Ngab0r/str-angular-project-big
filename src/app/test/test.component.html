@@ -1,0 +1,65 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Simple Table</h4>
+                        <p class="card-category"> Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Zip
+                                    </th>
+                                    <th>
+                                        Country
+                                    </th>
+                                    <th>
+                                        City
+                                    </th>
+                                    <th>
+                                        Street
+                                    </th>
+                                    <th>
+                                        Notes
+                                    </th>
+                                </thead>
+                                <tbody>
+                                <!-- 1. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez
+                                        addressList$ a test.component.ts-ben van
+                                -->
+                                  <tr *ngFor="let address of testList$ | async  "> 
+          
+                                <!-- 2. - Observable 
+                                  <tr *ngFor="let address of testList | async  ">
+                                -->
+                                    <td>{{ address.id }}</td>
+                                    <td>{{ address.zip }}</td>
+                                    <td>{{ address.country }}</td>
+                                    <td>{{ address.city }}</td>
+                                    <td>{{ address.street }}</td>
+                                    <td>{{ address.notes }}</td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+        
