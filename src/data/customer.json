@@ -1,0 +1,52 @@
+{
+  "customer": [
+    {
+      "id": 1,
+      "firstName": "Kovács",
+      "lastname": "Júlia",
+      "email": "kovacsjuli@gmail.com",
+      "address": 1,
+      "active": true
+    },
+    {
+      "id": 2,
+      "firstName": "Horváth",
+      "lastname": "Ferenc",
+      "email": "horvathf11@gmail.com",
+      "address": 2,
+      "active": false
+    },
+    {
+      "id": 3,
+      "firstName": "Nagy",
+      "lastname": "Zoltán",
+      "email": "nzolii13@citromail.hu",
+      "address": 3,
+      "active": true
+    },
+    {
+      "id": 4,
+      "firstName": "Zováth",
+      "lastname": "Erzsébet",
+      "email": "zerzsi@freemail.hu",
+      "address": 4,
+      "active": false
+    },
+    {
+      "id": 5,
+      "firstName": "Utód",
+      "lastname": "Benett",
+      "email": "benike14@gmail.com",
+      "address": 5,
+      "active": false
+    },
+    {
+      "id": 6,
+      "firstName": "Hupcsik",
+      "lastname": "Géza",
+      "email": "huge1987@gmail.com",
+      "address": 6,
+      "active": true
+    }
+  ]
+}

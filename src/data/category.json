@@ -1,0 +1,29 @@
+{
+    "category": [
+        {
+            "catID": "1",
+            "name": "klasszikus",
+            "description": "komolyzene"
+        },
+        {
+            "catID": "2",
+            "name": "nép",
+            "description": "népzene"
+        },
+        {
+            "catID": "3",
+            "name": "pop",
+            "description": "popzene"
+        },
+        {
+            "catID": "4",
+            "name": "elektronikus",
+            "description": "elektronikus zene"
+        },
+        {
+            "catID": "5",
+            "name": "rock",
+            "description": "rockzene"
+        }
+    ]
+}
