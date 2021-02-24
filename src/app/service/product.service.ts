@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Address } from '../model/address';
+import { Product } from '../model/product';
 
 @Injectable({
   providedIn: 'root'
@@ -21,30 +22,31 @@ export class ProductService {
   ]; */
 
 
-  private listUrl: string = "http://localhost:3000/address";
+  private listUrl: string = "http://localhost:3000/products";
 
   // product.service.ts fileban levo adatok megjelenitesehez
-  list$: BehaviorSubject<Address[]> = new BehaviorSubject<Address[]>([]);
+  list$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
 
   constructor(
     private http: HttpClient
   ) { }
 
-    
+
   // 1.) - BehaviorSubject
   getAll(): void {
-    this.http.get<Address[]>(this.listUrl).subscribe(
-      address => this.list$.next(address)
+    this.http.get<Product[]>(this.listUrl).subscribe(
+      product => this.list$.next(product)
     );
   }
-  
+
+
 
 
 
   //2.) - Observable
   /* getAll(): Observable<Address[]> {
     return this.http.get<Address[]>(this.listUrl);
-  } */ 
+  } */
 
 
 

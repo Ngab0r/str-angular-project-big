@@ -10,6 +10,7 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
 import { TestComponent } from '../../test/test.component'
+import { ProductComponent } from 'app/product/product.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -54,14 +55,15 @@ export const AdminLayoutRoutes: Routes = [
     //         component: UpgradeComponent
     //     }]
     // }
-    { path: 'test',      component: TestComponent },
+    { path: 'test', component: TestComponent },
+    { path: 'product', component: ProductComponent },
 
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
-    { path: 'typography',     component: TypographyComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent },
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'user-profile', component: UserProfileComponent },
+    { path: 'table-list', component: TableListComponent },
+    { path: 'typography', component: TypographyComponent },
+    { path: 'icons', component: IconsComponent },
+    { path: 'maps', component: MapsComponent },
+    { path: 'notifications', component: NotificationsComponent },
+    { path: 'upgrade', component: UpgradeComponent },
 ];
