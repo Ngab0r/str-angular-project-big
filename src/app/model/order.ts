@@ -7,7 +7,7 @@ enum OrderStatus {
 }
 
 export interface IOrderedItem {
-    product: Product;
+    productID: number;
     quantity: number;
 }
 
@@ -20,13 +20,8 @@ export interface IOrder {
 }
 
 export class orderedItem implements IOrderedItem {
-    product: Product;
+    productID: number = 0;
     quantity: number = 0;
-
-    constructor(product: Product, quantity: number) {
-        this.product = product;
-        this.quantity = quantity;
-    }
 }
 
 export class Order implements IOrder {
@@ -44,7 +39,9 @@ export class Order implements IOrder {
     calculateAmount(orderedItems: Array<IOrderedItem> = []): void {
         let amount = 0;
         orderedItems.forEach(function (orderedItem) {
-            amount += orderedItem.product.price * orderedItem.quantity;
+            // @todo: get product by ID from ProductService
+            let price = 1000;
+            amount += price * orderedItem.quantity;
           })
         this.amount = amount;
     }
