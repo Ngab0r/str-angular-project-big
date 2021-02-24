@@ -27,6 +27,7 @@ import { TestComponent } from './test/test.component';
 import { CategoryComponent } from './category/category.component';
 import { CustomerComponent } from './customer/customer.component';
 
+import { BillComponent } from './bill/bill.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { CustomerComponent } from './customer/customer.component';
     CategoryComponent,
     CustomerComponent,
 
+    BillComponent,
 
 
   ],
