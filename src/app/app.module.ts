@@ -24,6 +24,7 @@ import {
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ProductComponent } from './product/product.component';
 import { TestComponent } from './test/test.component';
+import { CustomerComponent } from './customer/customer.component';
 
 
 
@@ -45,6 +46,7 @@ import { TestComponent } from './test/test.component';
     AdminLayoutComponent,
     ProductComponent,
     TestComponent,
+    CustomerComponent,
 
 
 
