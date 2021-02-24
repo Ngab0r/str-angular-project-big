@@ -1,0 +1,104 @@
+{
+    "order": [
+        {
+            "id": "1",
+            "customerID": "1",
+            "items": [
+                {
+                    "productID": "1",
+                    "quantity": "1"
+                },
+                {
+                    "productID": "2",
+                    "quantity": "2"
+                }
+            ],
+            "amount": "10200",
+            "status": "new"
+        },
+        {
+            "id": "2",
+            "customerID": "2",
+            "items": [
+                {
+                    "productID": "3",
+                    "quantity": "1"
+                }
+            ],
+            "amount": "3000",
+            "status": "new"
+        },     
+        {
+            "id": "3",
+            "customerID": "2",
+            "items": [
+                {
+                    "productID": "4",
+                    "quantity": "2"
+                }
+            ],
+            "amount": "6400",
+            "status": "new"
+        },
+        {
+            "id": "4",
+            "customerID": "2",
+            "items": [
+                {
+                    "productID": "3",
+                    "quantity": "1"
+                }
+            ],
+            "amount": "3000",
+            "status": "paid"
+        },  
+        {
+            "id": "5",
+            "customerID": "3",
+            "items": [
+                {
+                    "productID": "3",
+                    "quantity": "1"
+                },
+                {
+                    "productID": "4",
+                    "quantity": "1"
+                }
+            ],
+            "amount": "6200",
+            "status": "new"
+        },       
+        {
+            "id": "6",
+            "customerID": "4",
+            "items": [
+                {
+                    "productID": "7",
+                    "quantity": "1"
+                }
+            ],
+            "amount": "2000",
+            "status": "shipped"
+        },      
+        {
+            "id": "7",
+            "customerID": "6",
+            "items": [
+                {
+                    "productID": "4",
+                    "quantity": "1"
+                },
+                {
+                    "productID": "5",
+                    "quantity": "2"
+                },
+                {
+                    "productID": "6",
+                    "quantity": "1"
+                }
+            ],
+            "amount": "14010",
+            "status": "paid"
+        }   
+    ]
+}

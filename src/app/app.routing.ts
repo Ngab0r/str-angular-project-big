@@ -4,6 +4,7 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { ProductComponent } from './product/product.component';
 
 const routes: Routes =[
   {
@@ -17,7 +18,11 @@ const routes: Routes =[
       path: '',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
     }]
-  }
+  },
+  {
+    path: 'product',
+    component: ProductComponent,
+  },
 ];
 
 @NgModule({

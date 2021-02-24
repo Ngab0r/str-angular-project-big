@@ -1,0 +1,35 @@
+<p>product works!</p>
+<div class="row">
+    <div class="col-4 offset-8 mt-4 mb-4">
+      <input [(ngModel)]="phrase" type="text" class="form-control">
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead>
+          <th>id</th>
+          <th>zip</th>
+          <th>country</th>
+          <th>city</th>
+        </thead>
+        <tbody>
+          <!-- 2. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez
+              addressList$ a product.component.ts-ben van
+          -->
+              <tr *ngFor="let address of addressList$ | async  "> 
+          
+          <!-- 2. - Observable 
+            <tr *ngFor="let address of addressList | async  ">
+          -->
+            <td>{{ address.id }}</td>
+            <td>{{ address.zip }}</td>
+            <td>{{ address.country }}</td>
+            <td>{{ address.city }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

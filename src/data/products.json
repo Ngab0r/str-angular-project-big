@@ -1,0 +1,9 @@
+"products": {
+{"id":1,"name":"Ludovico Einaudi","title":"Una Mattina","type":"klasszikus","catID":1,"description":"Klasszikus zongorajáték","price":3200,"featured":true,"active":true,"year":2004},
+{"id":2,"name":"Tony McGuinness","title":"The Anjundeep Edition 319","type":"elektronikus","catID":4,"description":"Elektonikus, transz és indie zene","price":3500,"featured":true,"active":true,"year":2020},
+{"id":3,"name":"Muzsikás","title":"Kettő","type":"népzene","catID":2,"description":"Magyar népzene","price":3000,"featured":true,"active":true,"year":1980},
+{"id":4,"name":"Pink Floyd","title":"Animals","type":"rock","catID":5,"description":"Progresszív rockzene","price":3200,"featured":true,"active":true,"year":1977},
+{"id":5,"name":"Awolnation","title":"Run","type":"rock","catID":5,"description":"Alternatív, elektronikus, dance rock","price":4530,"featured":true,"active":true,"year":2015},
+{"id":6,"name":"Wolfgang Amadeus Mozart","title":"Mesterdarabok","type":"klasszikus","catID":1,"description":"Klasszikus Mozart darabok gyűjteménye","price":1750,"featured":false,"active":true,"year":2011},
+{"id":7,"name":"Wolfgang Amadeus Mozart","title":"Figaro házassága","type":"klasszikus","catID":1,"description":"Klasszikus opera","price":2000,"featured":false,"active":false,"year":1987},
+}
