@@ -1,0 +1,51 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">Simple Table</h4>
+              <p class="card-category"> Here is a subtitle for this table</p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <th>id</th>
+                    <th>customerID</th>
+                    <th>productID</th>
+                    <th>quantity</th>
+                    <th>amount</th>
+                    <th>status</th>
+                  </thead>
+                  <tbody>
+                    <!-- 2. - BehaviorSubject vagy a order.service.ts fileban levo adatok megjelenitesehez
+                orderList$ a order.component.ts-ben van
+            -->
+                    <tr *ngFor="let order of orderList$ | async  ">
+  
+                      <!-- 2. - Observable 
+              <tr *ngFor="let order of orderList | async  ">
+            -->
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.customerID }}</td>
+                        <td><tr *ngFor="let i of order.items">
+                            <td>{{ i.productID }}</td>
+                            </tr>
+                        </td>
+                        <td><tr *ngFor="let i of order.items">
+                            <td>{{ i.quantity }}</td>
+                            </tr>
+                        </td>
+                      <td>{{ order.amount }}</td>
+                      <td>{{ order.status }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
