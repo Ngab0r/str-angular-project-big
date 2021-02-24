@@ -26,6 +26,7 @@ import { ProductComponent } from './product/product.component';
 import { TestComponent } from './test/test.component';
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -44,6 +45,7 @@ import { TestComponent } from './test/test.component';
     AdminLayoutComponent,
     ProductComponent,
     TestComponent,
+
 
 
   ],
