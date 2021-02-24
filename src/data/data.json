@@ -32,9 +32,7 @@
             "street": "Rue de Port 44.",
             "notes": "vvv"
         }
-    ]
-}
-{
+    ],
     "bill": [
         {
             "id": 1,
@@ -78,9 +76,7 @@
             "amount": "14010",
             "status": "paid"
         }
-    ]
-}
-{
+    ],
     "category": [
         {
             "catID": "1",
@@ -107,9 +103,7 @@
             "name": "rock",
             "description": "rockzene"
         }
-    ]
-}
-{
+    ],
     "customer": [
         {
             "id": 1,
@@ -159,9 +153,7 @@
             "address": 6,
             "active": true
         }
-    ]
-}
-{
+    ],
     "order": [
         {
             "id": "1",
@@ -263,9 +255,7 @@
             "amount": "14010",
             "status": "paid"
         }
-    ]
-}
-{
+    ],
     "products": [
         {
             "id": 1,
