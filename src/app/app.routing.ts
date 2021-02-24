@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ProductComponent } from './product/product.component';
+import { TestComponent } from './test/test.component';
 
 const routes: Routes =[
   {
@@ -21,6 +22,17 @@ const routes: Routes =[
   },
   {
     path: 'product',
+    component: ProductComponent,
+  },
+
+  // for testing the routing and json listing in html page
+  {
+    path: 'test',
+    component: TestComponent,
+  },
+  
+  {
+    path: 'product/:idOrName',
     component: ProductComponent,
   },
 ];
