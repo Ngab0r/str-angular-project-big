@@ -12,6 +12,8 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { TestComponent } from '../../test/test.component'
 import { ProductComponent } from 'app/product/product.component';
 import { OrderComponent } from 'app/order/order.component';
+import { CategoryComponent } from 'app/category/category.component';
+import { CustomerComponent } from 'app/customer/customer.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -57,9 +59,13 @@ export const AdminLayoutRoutes: Routes = [
     //     }]
     // }
     { path: 'test', component: TestComponent },
+
     { path: 'product', component: ProductComponent },
     { path: 'order', component: OrderComponent },
     
+    { path: 'category', component: CategoryComponent },
+    { path: 'customer', component: CustomerComponent },
+
     { path: 'dashboard', component: DashboardComponent },
     { path: 'user-profile', component: UserProfileComponent },
     { path: 'table-list', component: TableListComponent },

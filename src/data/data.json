@@ -1,345 +1,345 @@
 {
-    "address": [
+  "bill": [
+    {
+      "id": 1,
+      "orderID": 1,
+      "amount": "10200",
+      "status": "new"
+    },
+    {
+      "id": 2,
+      "orderID": 2,
+      "amount": "3000",
+      "status": "new"
+    },
+    {
+      "id": 3,
+      "orderID": 3,
+      "amount": "6400",
+      "status": "new"
+    },
+    {
+      "id": 4,
+      "orderID": 4,
+      "amount": "3000",
+      "status": "paid"
+    },
+    {
+      "id": 5,
+      "orderID": 5,
+      "amount": "6200",
+      "status": "new"
+    },
+    {
+      "id": 6,
+      "orderID": 6,
+      "amount": "2000",
+      "status": "new"
+    },
+    {
+      "id": 7,
+      "orderID": 7,
+      "amount": "14010",
+      "status": "paid"
+    }
+  ],
+  "category": [
+    {
+      "id": "1",
+      "name": "klasszikus",
+      "description": "komolyzene"
+    },
+    {
+      "id": "2",
+      "name": "nép",
+      "description": "népzene"
+    },
+    {
+      "id": "3",
+      "name": "pop",
+      "description": "popzene"
+    },
+    {
+      "id": "4",
+      "name": "elektronikus",
+      "description": "elektronikus zene"
+    },
+    {
+      "id": "5",
+      "name": "rock",
+      "description": "rockzene"
+    }
+  ],
+  "customer": [
+    {
+      "id": 1,
+      "firstName": "Kovács",
+      "lastname": "Júlia",
+      "email": "kovacsjuli@gmail.com",
+      "address": {
+        "zip": "1234",
+        "country": "Hungary",
+        "city": "Budapest",
+        "street": "Margit krt. 11.",
+        "notes": "xxx"
+      },
+      "active": true
+    },
+    {
+      "id": 2,
+      "firstName": "Horváth",
+      "lastname": "Ferenc",
+      "email": "horvathf11@gmail.com",
+      "address": {
+        "zip": "70197",
+        "country": "Germany",
+        "city": "Stuttgart",
+        "street": "Haupt str. 22.",
+        "notes": "yyy"
+      },
+      "active": false
+    },
+    {
+      "id": 3,
+      "firstName": "Nagy",
+      "lastname": "Zoltán",
+      "email": "nzolii13@citromail.hu",
+      "address": {
+        "zip": "2244 VJ",
+        "country": "Netherlands",
+        "city": "Den Haag",
+        "street": "Suzette st. 33.",
+        "notes": "zzz"
+      },
+      "active": true
+    },
+    {
+      "id": 4,
+      "firstName": "Zováth",
+      "lastname": "Erzsébet",
+      "email": "zerzsi@freemail.hu",
+      "address": {
+        "zip": "59800",
+        "country": "France",
+        "city": "Lille",
+        "street": "Rue de Port 44.",
+        "notes": "vvv"
+      },
+      "active": false
+    },
+    {
+      "firstName": "Utód",
+      "lastname": "Benett",
+      "email": "benike14@gmail.com",
+      "address": {
+        "zip": "54100",
+        "country": "USA",
+        "city": "Lille",
+        "street": "Rue de Port 44.",
+        "notes": "vvv"
+      },
+      "active": false
+    },
+    {
+      "firstName": "Hupcsik",
+      "lastname": "Géza",
+      "email": "huge1987@gmail.com",
+      "address": {
+        "zip": "59800",
+        "country": "France",
+        "city": "Lille",
+        "street": "Rue de Port 44.",
+        "notes": "vvv"
+      },
+      "active": true
+    }
+  ],
+  "order": [
+    {
+      "id": "1",
+      "customerID": "1",
+      "items": [
         {
-            "id": 1,
-            "zip": "1234",
-            "country": "Hungary",
-            "city": "Budapest",
-            "street": "Margit krt. 11.",
-            "notes": "xxx"
+          "productID": "1",
+          "quantity": "1"
         },
         {
-            "id": 2,
-            "zip": "70197",
-            "country": "Germany",
-            "city": "Stuttgart",
-            "street": "Haupt str. 22.",
-            "notes": "yyy"
-        },
-        {
-            "id": 3,
-            "zip": "2244 VJ",
-            "country": "Netherlands",
-            "city": "Den Haag",
-            "street": "Suzette st. 33.",
-            "notes": "zzz"
-        },
-        {
-            "id": 4,
-            "zip": "59800",
-            "country": "France",
-            "city": "Lille",
-            "street": "Rue de Port 44.",
-            "notes": "vvv"
+          "productID": "2",
+          "quantity": "2"
         }
-    ],
-    "bill": [
+      ],
+      "amount": "10200",
+      "status": "new"
+    },
+    {
+      "id": "2",
+      "customerID": "2",
+      "items": [
         {
-            "id": 1,
-            "orderID": 1,
-            "amount": "10200",
-            "status": "new"
-        },
-        {
-            "id": 2,
-            "orderID": 2,
-            "amount": "3000",
-            "status": "new"
-        },
-        {
-            "id": 3,
-            "orderID": 3,
-            "amount": "6400",
-            "status": "new"
-        },
-        {
-            "id": 4,
-            "orderID": 4,
-            "amount": "3000",
-            "status": "paid"
-        },
-        {
-            "id": 5,
-            "orderID": 5,
-            "amount": "6200",
-            "status": "new"
-        },
-        {
-            "id": 6,
-            "orderID": 6,
-            "amount": "2000",
-            "status": "new"
-        },
-        {
-            "id": 7,
-            "orderID": 7,
-            "amount": "14010",
-            "status": "paid"
+          "productID": "3",
+          "quantity": "1"
         }
-    ],
-    "category": [
+      ],
+      "amount": "3000",
+      "status": "new"
+    },
+    {
+      "id": "3",
+      "customerID": "2",
+      "items": [
         {
-            "catID": "1",
-            "name": "klasszikus",
-            "description": "komolyzene"
-        },
-        {
-            "catID": "2",
-            "name": "nép",
-            "description": "népzene"
-        },
-        {
-            "catID": "3",
-            "name": "pop",
-            "description": "popzene"
-        },
-        {
-            "catID": "4",
-            "name": "elektronikus",
-            "description": "elektronikus zene"
-        },
-        {
-            "catID": "5",
-            "name": "rock",
-            "description": "rockzene"
+          "productID": "4",
+          "quantity": "2"
         }
-    ],
-    "customer": [
+      ],
+      "amount": "6400",
+      "status": "new"
+    },
+    {
+      "id": "4",
+      "customerID": "2",
+      "items": [
         {
-            "id": 1,
-            "firstName": "Kovács",
-            "lastname": "Júlia",
-            "email": "kovacsjuli@gmail.com",
-            "address": 1,
-            "active": true
-        },
-        {
-            "id": 2,
-            "firstName": "Horváth",
-            "lastname": "Ferenc",
-            "email": "horvathf11@gmail.com",
-            "address": 2,
-            "active": false
-        },
-        {
-            "id": 3,
-            "firstName": "Nagy",
-            "lastname": "Zoltán",
-            "email": "nzolii13@citromail.hu",
-            "address": 3,
-            "active": true
-        },
-        {
-            "id": 4,
-            "firstName": "Zováth",
-            "lastname": "Erzsébet",
-            "email": "zerzsi@freemail.hu",
-            "address": 4,
-            "active": false
-        },
-        {
-            "id": 5,
-            "firstName": "Utód",
-            "lastname": "Benett",
-            "email": "benike14@gmail.com",
-            "address": 5,
-            "active": false
-        },
-        {
-            "id": 6,
-            "firstName": "Hupcsik",
-            "lastname": "Géza",
-            "email": "huge1987@gmail.com",
-            "address": 6,
-            "active": true
+          "productID": "3",
+          "quantity": "1"
         }
-    ],
-    "order": [
+      ],
+      "amount": "3000",
+      "status": "paid"
+    },
+    {
+      "id": "5",
+      "customerID": "3",
+      "items": [
         {
-            "id": "1",
-            "customerID": "1",
-            "items": [
-                {
-                    "productID": "1",
-                    "quantity": "1"
-                },
-                {
-                    "productID": "2",
-                    "quantity": "2"
-                }
-            ],
-            "amount": "10200",
-            "status": "new"
+          "productID": "3",
+          "quantity": "1"
         },
         {
-            "id": "2",
-            "customerID": "2",
-            "items": [
-                {
-                    "productID": "3",
-                    "quantity": "1"
-                }
-            ],
-            "amount": "3000",
-            "status": "new"
-        },
-        {
-            "id": "3",
-            "customerID": "2",
-            "items": [
-                {
-                    "productID": "4",
-                    "quantity": "2"
-                }
-            ],
-            "amount": "6400",
-            "status": "new"
-        },
-        {
-            "id": "4",
-            "customerID": "2",
-            "items": [
-                {
-                    "productID": "3",
-                    "quantity": "1"
-                }
-            ],
-            "amount": "3000",
-            "status": "paid"
-        },
-        {
-            "id": "5",
-            "customerID": "3",
-            "items": [
-                {
-                    "productID": "3",
-                    "quantity": "1"
-                },
-                {
-                    "productID": "4",
-                    "quantity": "1"
-                }
-            ],
-            "amount": "6200",
-            "status": "new"
-        },
-        {
-            "id": "6",
-            "customerID": "4",
-            "items": [
-                {
-                    "productID": "7",
-                    "quantity": "1"
-                }
-            ],
-            "amount": "2000",
-            "status": "shipped"
-        },
-        {
-            "id": "7",
-            "customerID": "6",
-            "items": [
-                {
-                    "productID": "4",
-                    "quantity": "1"
-                },
-                {
-                    "productID": "5",
-                    "quantity": "2"
-                },
-                {
-                    "productID": "6",
-                    "quantity": "1"
-                }
-            ],
-            "amount": "14010",
-            "status": "paid"
+          "productID": "4",
+          "quantity": "1"
         }
-    ],
-    "products": [
+      ],
+      "amount": "6200",
+      "status": "new"
+    },
+    {
+      "id": "6",
+      "customerID": "4",
+      "items": [
         {
-            "id": 1,
-            "name": "Ludovico Einaudi",
-            "title": "Una Mattina",
-            "type": "klasszikus",
-            "catID": 1,
-            "description": "Klasszikus zongorajáték",
-            "price": 3200,
-            "featured": true,
-            "active": true,
-            "year": 2004
-        },
-        {
-            "id": 2,
-            "name": "Tony McGuinness",
-            "title": "The Anjundeep Edition 319",
-            "type": "elektronikus",
-            "catID": 4,
-            "description": "Elektonikus, transz és indie zene",
-            "price": 3500,
-            "featured": true,
-            "active": true,
-            "year": 2020
-        },
-        {
-            "id": 3,
-            "name": "Muzsikás",
-            "title": "Kettő",
-            "type": "népzene",
-            "catID": 2,
-            "description": "Magyar népzene",
-            "price": 3000,
-            "featured": true,
-            "active": true,
-            "year": 1980
-        },
-        {
-            "id": 4,
-            "name": "Pink Floyd",
-            "title": "Animals",
-            "type": "rock",
-            "catID": 5,
-            "description": "Progresszív rockzene",
-            "price": 3200,
-            "featured": true,
-            "active": true,
-            "year": 1977
-        },
-        {
-            "id": 5,
-            "name": "Awolnation",
-            "title": "Run",
-            "type": "rock",
-            "catID": 5,
-            "description": "Alternatív, elektronikus, dance rock",
-            "price": 4530,
-            "featured": true,
-            "active": true,
-            "year": 2015
-        },
-        {
-            "id": 6,
-            "name": "Wolfgang Amadeus Mozart",
-            "title": "Mesterdarabok",
-            "type": "klasszikus",
-            "catID": 1,
-            "description": "Klasszikus Mozart darabok gyűjteménye",
-            "price": 1750,
-            "featured": false,
-            "active": true,
-            "year": 2011
-        },
-        {
-            "id": 7,
-            "name": "Wolfgang Amadeus Mozart",
-            "title": "Figaro házassága",
-            "type": "klasszikus",
-            "catID": 1,
-            "description": "Klasszikus opera",
-            "price": 2000,
-            "featured": false,
-            "active": false,
-            "year": 1987
+          "productID": "7",
+          "quantity": "1"
         }
-    ]
+      ],
+      "amount": "2000",
+      "status": "shipped"
+    },
+    {
+      "id": "7",
+      "customerID": "6",
+      "items": [
+        {
+          "productID": "4",
+          "quantity": "1"
+        },
+        {
+          "productID": "5",
+          "quantity": "2"
+        },
+        {
+          "productID": "6",
+          "quantity": "1"
+        }
+      ],
+      "amount": "14010",
+      "status": "paid"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Ludovico Einaudi",
+      "title": "Una Mattina",
+      "type": "klasszikus",
+      "catID": 1,
+      "description": "Klasszikus zongorajáték",
+      "price": 3200,
+      "featured": true,
+      "active": true,
+      "year": 2004
+    },
+    {
+      "id": 2,
+      "name": "Tony McGuinness",
+      "title": "The Anjundeep Edition 319",
+      "type": "elektronikus",
+      "catID": 4,
+      "description": "Elektonikus, transz és indie zene",
+      "price": 3500,
+      "featured": true,
+      "active": true,
+      "year": 2020
+    },
+    {
+      "id": 3,
+      "name": "Muzsikás",
+      "title": "Kettő",
+      "type": "népzene",
+      "catID": 2,
+      "description": "Magyar népzene",
+      "price": 3000,
+      "featured": true,
+      "active": true,
+      "year": 1980
+    },
+    {
+      "id": 4,
+      "name": "Pink Floyd",
+      "title": "Animals",
+      "type": "rock",
+      "catID": 5,
+      "description": "Progresszív rockzene",
+      "price": 3200,
+      "featured": true,
+      "active": true,
+      "year": 1977
+    },
+    {
+      "id": 5,
+      "name": "Awolnation",
+      "title": "Run",
+      "type": "rock",
+      "catID": 5,
+      "description": "Alternatív, elektronikus, dance rock",
+      "price": 4530,
+      "featured": true,
+      "active": true,
+      "year": 2015
+    },
+    {
+      "id": 6,
+      "name": "Wolfgang Amadeus Mozart",
+      "title": "Mesterdarabok",
+      "type": "klasszikus",
+      "catID": 1,
+      "description": "Klasszikus Mozart darabok gyűjteménye",
+      "price": 1750,
+      "featured": false,
+      "active": true,
+      "year": 2011
+    },
+    {
+      "id": 7,
+      "name": "Wolfgang Amadeus Mozart",
+      "title": "Figaro házassága",
+      "type": "klasszikus",
+      "catID": 1,
+      "description": "Klasszikus opera",
+      "price": 2000,
+      "featured": false,
+      "active": false,
+      "year": 1987
+    }
+  ]
 }
