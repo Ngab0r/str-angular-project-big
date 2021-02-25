@@ -9,20 +9,20 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
   //{ path: '/testeditor/:idOrName', title: 'Edit', icon: 'dashboard', class: '' },
-  { path: '/test', title: 'Testing', icon: 'dashboard', class: '' },
-  { path: '/category', title: 'Category', icon: 'dashboard', class: '' },
-  { path: '/product', title: 'ProductList', icon: 'dashboard', class: '' },
-  { path: '/order', title: 'OrderList', icon: 'dashboard', class: '' },
-  { path: '/customer', title: 'CustomertList', icon: 'dashboard', class: '' },
-  { path: '/bill', title: 'BillList', icon: 'dashboard', class: '' },
+  // { path: '/test', title: 'Testing', icon: 'dashboard', class: '' },
+  { path: '/category', title: 'Category', icon: 'category', class: '' },
+  { path: '/product', title: 'ProductList', icon: 'music_note', class: '' },
+  { path: '/order', title: 'OrderList', icon: 'shopping_cart', class: '' },
+  { path: '/customer', title: 'CustomertList', icon: 'account_circle', class: '' },
+  { path: '/bill', title: 'BillList', icon: 'request_page', class: '' },
   { path: '/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' },
-  { path: '/user-profile', title: 'User Profile', icon: 'person', class: '' },
-  { path: '/table-list', title: 'Table List', icon: 'content_paste', class: '' },
-  { path: '/typography', title: 'Typography', icon: 'library_books', class: '' },
-  { path: '/icons', title: 'Icons', icon: 'bubble_chart', class: '' },
-  { path: '/maps', title: 'Maps', icon: 'location_on', class: '' },
-  { path: '/notifications', title: 'Notifications', icon: 'notifications', class: '' },
-  { path: '/upgrade', title: 'Upgrade to PRO', icon: 'unarchive', class: 'active-pro' },
+  //   { path: '/user-profile', title: 'User Profile', icon: 'person', class: '' },
+  //   { path: '/table-list', title: 'Table List', icon: 'content_paste', class: '' },
+  //   { path: '/typography', title: 'Typography', icon: 'library_books', class: '' },
+  //   { path: '/icons', title: 'Icons', icon: 'bubble_chart', class: '' },
+  //   { path: '/maps', title: 'Maps', icon: 'location_on', class: '' },
+  //   { path: '/notifications', title: 'Notifications', icon: 'notifications', class: '' },
+  //   { path: '/upgrade', title: 'Upgrade to PRO', icon: 'unarchive', class: 'active-pro' },
 ];
 
 @Component({

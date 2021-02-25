@@ -53,6 +53,9 @@
                     <i *ngIf="sorter.sortAscend && sorter.sortKey==='active'" class="fa fa-angle-down"></i>
                     <i *ngIf="!sorter.sortAscend && sorter.sortKey==='active'" class="fa fa-angle-up"></i>
                   </th>
+                  <th>
+                    Edit
+                  </th>
                 </thead>
                 <tbody>
                   <!-- 2. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez
@@ -75,6 +78,12 @@
                     <td>{{ product.price }}</td>
                     <td>{{ product.featured }}</td>
                     <td>{{ product.active }}</td>
+                    <td>
+                      <div class="btn-group">
+                        <button [routerLink]="'/producteditor/' +[product.id]" class="btn btn-primary"><i
+                            class="fa fa-edit"></i></button>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>

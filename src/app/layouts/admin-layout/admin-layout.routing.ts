@@ -17,6 +17,7 @@ import { OrderComponent } from 'app/order/order.component';
 import { CategoryComponent } from 'app/category/category.component';
 import { CustomerComponent } from 'app/customer/customer.component';
 import { BillComponent } from 'app/bill/bill.component';
+import { ProductEditorComponent } from 'app/editor/product-editor/product-editor.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -62,8 +63,9 @@ export const AdminLayoutRoutes: Routes = [
     //     }]
     // }
     { path: 'test', component: TestComponent },
-
     { path: 'testeditor/:idOrName', component: TestEditorComponent },
+
+    { path: 'producteditor/:idOrName', component: ProductEditorComponent },
     { path: 'product', component: ProductComponent },
     { path: 'order', component: OrderComponent },
 
