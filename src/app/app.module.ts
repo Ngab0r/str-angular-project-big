@@ -33,6 +33,7 @@ import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
 import { ProductPropertyFilterPipe } from './pipe/product-property-filter.pipe';
 import { SearchbarComponent } from './common/searchbar/searchbar.component';
+import { TestEditorComponent } from './editor/test-editor/test-editor.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { SearchbarComponent } from './common/searchbar/searchbar.component';
     CustomerComponent,
 
     BillComponent,
+    TestEditorComponent,
 
     FilterPipe,
 
