@@ -28,7 +28,7 @@
                   <!-- 2. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez
               addressList$ a product.component.ts-ben van
           -->
-                  <tr *ngFor="let product of productList$ | async  ">
+                  <tr *ngFor="let product of productList$ | async | filter:filter.phrase:filter.selectedKeyForSearch:filter.phrase2">
 
                     <!-- 2. - Observable 
             <tr *ngFor="let product of productList | async  ">

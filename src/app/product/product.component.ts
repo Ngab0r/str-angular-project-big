@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { ProductService } from '../service/product.service';
 import { Address } from '../model/address';
 import { Product } from 'app/model/product';
+import { Filter } from 'app/model/filter';
 
 @Component({
   selector: 'app-product',
@@ -15,7 +16,7 @@ export class ProductComponent implements OnInit {
 
   // 1.) - Behaviorsubject
   productList$: BehaviorSubject<Product[]> = this.productService.list$;
-
+  filter: Filter = new Filter();
   // 2.) - Observable
   //addressList: Observable<Address[]>;
 
