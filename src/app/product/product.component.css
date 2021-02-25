@@ -1,3 +1,28 @@
-.thumbnail{
-    width: 75%;
+.thumbnail {
+  width: 75%;
+}
+
+th {
+  cursor: pointer;
+}
+
+th:hover {
+  color: #300035;
+}
+
+th {
+  transition: linear 200ms;
+}
+
+.form-control {
+  transition: linear 200ms;
+}
+.form-control:hover {
+  border-color: #300035;
+}
+
+i {
+  position: absolute;
+  margin-left: 0.5rem;
+  margin-top: 0.25rem;
 }

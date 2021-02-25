@@ -36,4 +36,9 @@ export class ProductComponent implements OnInit {
     this.productService.getAll();
   }
 
+  selectColumnForSort(col: string): void {
+    this.sorter.sortKey === col ? this.sorter.sortAscend = !this.sorter.sortAscend : this.sorter.sortAscend = true;
+    this.sorter.sortKey = col;
+  }
+
 }
