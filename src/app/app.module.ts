@@ -25,6 +25,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { ProductComponent } from './product/product.component';
 import { TestComponent } from './test/test.component';
 import { BillComponent } from './bill/bill.component';
+import { TestEditorComponent } from './editor/test-editor/test-editor.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { BillComponent } from './bill/bill.component';
     ProductComponent,
     TestComponent,
     BillComponent,
+    TestEditorComponent,
 
 
   ],

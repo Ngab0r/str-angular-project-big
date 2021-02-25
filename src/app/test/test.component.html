@@ -29,22 +29,28 @@
                                     <th>
                                         Notes
                                     </th>
+                                    <th>
+                                        Edit
+                                    </th>
                                 </thead>
                                 <tbody>
                                 <!-- 1. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez
                                         addressList$ a test.component.ts-ben van
                                 -->
-                                  <tr *ngFor="let address of testList$ | async  "> 
+                                  <tr *ngFor="let testitem of testList$ | async  "> 
           
                                 <!-- 2. - Observable 
                                   <tr *ngFor="let address of testList | async  ">
                                 -->
-                                    <td>{{ address.id }}</td>
-                                    <td>{{ address.zip }}</td>
-                                    <td>{{ address.country }}</td>
-                                    <td>{{ address.city }}</td>
-                                    <td>{{ address.street }}</td>
-                                    <td>{{ address.notes }}</td>
+                                    <td>{{ testitem.id }}</td>
+                                    <td>{{ testitem.zip }}</td>
+                                    <td>{{ testitem.country }}</td>
+                                    <td>{{ testitem.city }}</td>
+                                    <td>{{ testitem.street }}</td>
+                                    <td>{{ testitem.notes }}</td>
+                                    <td><div class="btn-group">
+                                            <button [routerLink]="'testeditor/' +[testitem.id]" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                        </div></td>
                                   </tr>
                                 </tbody>
                             </table>
