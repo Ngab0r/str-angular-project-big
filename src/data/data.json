@@ -531,19 +531,40 @@
         "active":true,
         "year":2004,
         "image":"assets/img/cdkepek/greenday-americanidiot.png"
+    }
+  ],
+  "testdata": [
+    {
+      "id": 1,
+      "zip": "1234",
+      "country": "Hungary",
+      "city": "Budapest",
+      "street": "Margit krt. 11.",
+      "notes": "xxx"
     },
     {
-      "id":22,
-      "name":"Vangelis",
-      "title":"Antarctica",	
-      "type":"elektronikus",
-      "catID":4,
-      "description":"A japán Antarctica film zenéje",
-      "price":1499,
-      "featured":false,
-      "active":true,
-      "year":1988,
-      "image":"assets/img/cdkepek/vangelis-antarctica.jpg"
-  }
-]
+      "id": 2,
+      "zip": "70197",
+      "country": "Germany",
+      "city": "Stuttgart",
+      "street": "Haupt str. 22.",
+      "notes": "yyy"
+    },
+    {
+      "id": 3,
+      "zip": "2244 VJ",
+      "country": "Netherlands",
+      "city": "Den Haag",
+      "street": "Suzette st. 33.",
+      "notes": "zzz"
+    },
+    {
+      "id": 4,
+      "zip": "59800",
+      "country": "France",
+      "city": "Lille",
+      "street": "Rue de Port 44.",
+      "notes": "vvv"
+    }
+ ]
 }
