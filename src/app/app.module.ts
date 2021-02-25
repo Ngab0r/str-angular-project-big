@@ -29,6 +29,10 @@ import { CategoryComponent } from './category/category.component';
 import { CustomerComponent } from './customer/customer.component';
 
 import { BillComponent } from './bill/bill.component';
+import { FilterPipe } from './pipe/filter.pipe';
+import { SorterPipe } from './pipe/sorter.pipe';
+import { ProductPropertyFilterPipe } from './pipe/product-property-filter.pipe';
+import { SearchbarComponent } from './common/searchbar/searchbar.component';
 
 
 @NgModule({
@@ -54,6 +58,14 @@ import { BillComponent } from './bill/bill.component';
     CustomerComponent,
 
     BillComponent,
+
+    FilterPipe,
+
+    SorterPipe,
+
+    ProductPropertyFilterPipe,
+
+    SearchbarComponent,
 
 
   ],
