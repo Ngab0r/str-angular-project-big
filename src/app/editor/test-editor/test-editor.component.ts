@@ -35,9 +35,20 @@ export class TestEditorComponent implements OnInit {
 
   onFormSubmit(form: NgForm): void {
     this.updating = true;
-    this.testService.update(this.testtt).subscribe(
-      () => this.router.navigate(['test'])
-    );
+
+    if (this.testtt.id === null) {
+      this.testService.create(this.testtt);
+      this.router.navigate(['test']);
+    } else {
+      this.testService.update(this.testtt).subscribe(
+        () => this.router.navigate(['test'])
+      );
+    }
+  }
+
+  delete(): void {
+    this.testService.remove(this.testtt);
+    this.router.navigate(['test']);
   }
 
 }
