@@ -8,7 +8,7 @@
             <p class="card-category"> Here is a subtitle for this table</p>
           </div>
           <div class="card-body">
-            <app-searchbar [(filter)]="filter" [usedFilterType]="'search'"></app-searchbar>
+            <app-searchbar [(filter)]="filter" [usedFilterType]="'admin'"></app-searchbar>
             <div class="table-responsive">
               <table class="table">
                 <thead class=" text-primary">
@@ -28,7 +28,7 @@
                   <!-- 2. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez
               addressList$ a product.component.ts-ben van
           -->
-                  <tr *ngFor="let product of productList$ | async | filter:filter.phrase:filter.selectedKeyForSearch:filter.phrase2">
+                  <tr *ngFor="let product of productList$ | async | filter:filter.phrase:filter.selectedKeyForSearch:filter.phrase2 | sorter:sorter.sortKey:sorter.sortAscend">
 
                     <!-- 2. - Observable 
             <tr *ngFor="let product of productList | async  ">
