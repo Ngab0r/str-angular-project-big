@@ -10,9 +10,12 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
 import { TestComponent } from '../../test/test.component'
+import { TestEditorComponent } from '../../editor/test-editor/test-editor.component'
+
 import { ProductComponent } from 'app/product/product.component';
 import { CategoryComponent } from 'app/category/category.component';
 import { CustomerComponent } from 'app/customer/customer.component';
+import { BillComponent } from 'app/bill/bill.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -62,6 +65,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'product', component: ProductComponent },
     { path: 'category', component: CategoryComponent },
     { path: 'customer', component: CustomerComponent },
+    { path: 'testeditor/:idOrName', component: TestEditorComponent },
+    { path: 'product', component: ProductComponent },
+    { path: 'bill', component: BillComponent },
 
     { path: 'dashboard', component: DashboardComponent },
     { path: 'user-profile', component: UserProfileComponent },
