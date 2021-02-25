@@ -42,19 +42,11 @@
     },
     {
       "id": 6,
-      "zip": "9999",
+      "zip": "9998",
       "country": "Valami",
       "city": "Valaki",
       "street": "Suzette st. 33.",
       "notes": "zzz"
-    },
-    {
-      "id": 7,
-      "zip": "44444",
-      "country": "Valahol",
-      "city": "Sehol",
-      "street": "Rue de Port 44.",
-      "notes": "vvv"
     }
   ]
 }
