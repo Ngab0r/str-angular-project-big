@@ -8,29 +8,66 @@
             <p class="card-category"> Here is a subtitle for this table</p>
           </div>
           <div class="card-body">
+            <app-searchbar [(filter)]="filter" [usedFilterType]="'admin'"></app-searchbar>
             <div class="table-responsive">
               <table class="table">
                 <thead class=" text-primary">
-                  <th>id</th>
-                  <th>name</th>
-                  <th>title</th>
-                  <th>year</th>
-                  <th>type</th>
-                  <th>catID</th>
-                  <th>description</th>
-                  <th>price</th>
-                  <th>featured</th>
-                  <th>active</th>
+                  <th>image</th>
+                  <th (click)="selectColumnForSort('id')">id
+                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='id'" class="fa fa-angle-down"></i>
+                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='id'" class="fa fa-angle-up"></i>
+                  </th>
+                  <th (click)="selectColumnForSort('name')">name
+                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='name'" class="fa fa-angle-down"></i>
+                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='name'" class="fa fa-angle-up"></i>
+                  </th>
+                  <th (click)="selectColumnForSort('title')">title
+                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='title'" class="fa fa-angle-down"></i>
+                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='title'" class="fa fa-angle-up"></i>
+                  </th>
+                  <th (click)="selectColumnForSort('year')">year
+                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='year'" class="fa fa-angle-down"></i>
+                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='year'" class="fa fa-angle-up"></i>
+                  </th>
+                  <th (click)="selectColumnForSort('type')">type
+                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='type'" class="fa fa-angle-down"></i>
+                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='type'" class="fa fa-angle-up"></i>
+                  </th>
+                  <th (click)="selectColumnForSort('catID')">catID
+                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='catID'" class="fa fa-angle-down"></i>
+                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='catID'" class="fa fa-angle-up"></i>
+                  </th>
+                  <th (click)="selectColumnForSort('description')">description
+                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='description'" class="fa fa-angle-down"></i>
+                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='description'" class="fa fa-angle-up"></i>
+                  </th>
+                  <th (click)="selectColumnForSort('pipe')">price
+                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='price'" class="fa fa-angle-down"></i>
+                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='price'" class="fa fa-angle-up"></i>
+                  </th>
+                  <th (click)="selectColumnForSort('featured')">featured
+                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='featured'" class="fa fa-angle-down"></i>
+                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='featured'" class="fa fa-angle-up"></i>
+                  </th>
+                  <th (click)="selectColumnForSort('active')">active
+                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='active'" class="fa fa-angle-down"></i>
+                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='active'" class="fa fa-angle-up"></i>
+                  </th>
+                  <th>
+                    Edit
+                  </th>
                 </thead>
                 <tbody>
                   <!-- 2. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez
               addressList$ a product.component.ts-ben van
           -->
-                  <tr *ngFor="let product of productList$ | async  ">
+                  <tr
+                    *ngFor="let product of productList$ | async | filter:filter.phrase:filter.selectedKeyForSearch:filter.phrase2 | sorter:sorter.sortKey:sorter.sortAscend">
 
                     <!-- 2. - Observable 
             <tr *ngFor="let product of productList | async  ">
           -->
+                    <td><img [src]="product.image" class="thumbnail" alt="product.name"></td>
                     <td>{{ product.id }}</td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.title }}</td>
@@ -41,6 +78,12 @@
                     <td>{{ product.price }}</td>
                     <td>{{ product.featured }}</td>
                     <td>{{ product.active }}</td>
+                    <td>
+                      <div class="btn-group">
+                        <button [routerLink]="'/producteditor/' +[product.id]" class="btn btn-primary"><i
+                            class="fa fa-edit"></i></button>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
