@@ -24,10 +24,15 @@ import {
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ProductComponent } from './product/product.component';
 import { TestComponent } from './test/test.component';
+import { OrderComponent } from './order/order.component';
 import { CategoryComponent } from './category/category.component';
 import { CustomerComponent } from './customer/customer.component';
 
 import { BillComponent } from './bill/bill.component';
+import { FilterPipe } from './pipe/filter.pipe';
+import { SorterPipe } from './pipe/sorter.pipe';
+import { ProductPropertyFilterPipe } from './pipe/product-property-filter.pipe';
+import { SearchbarComponent } from './common/searchbar/searchbar.component';
 import { TestEditorComponent } from './editor/test-editor/test-editor.component';
 
 
@@ -49,11 +54,20 @@ import { TestEditorComponent } from './editor/test-editor/test-editor.component'
     AdminLayoutComponent,
     ProductComponent,
     TestComponent,
+    OrderComponent,
     CategoryComponent,
     CustomerComponent,
 
     BillComponent,
     TestEditorComponent,
+
+    FilterPipe,
+
+    SorterPipe,
+
+    ProductPropertyFilterPipe,
+
+    SearchbarComponent,
 
 
   ],
