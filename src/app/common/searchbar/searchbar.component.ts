@@ -1,19 +1,19 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Filter } from 'src/app/model/filter';
-import { Sorter } from 'src/app/model/sorter';
-import { ConfigService } from 'src/app/service/config.service';
+import { Filter } from 'app/model/filter';
+//import { Sorter } from 'src/app/model/sorter';
+import { ConfigService } from 'app/service/config.service';
 
 @Component({
-  selector: 'app-searcbar',
-  templateUrl: './searcbar.component.html',
-  styleUrls: ['./searcbar.component.scss']
+  selector: 'app-searchbar',
+  templateUrl: './searchbar.component.html',
+  styleUrls: ['./searchbar.component.scss']
 })
-export class SearcbarComponent implements OnInit {
+export class SearchbarComponent implements OnInit {
 
   @Input() filter: Filter;
-  @Input() sorter: Sorter;
+  //@Input() sorter: Sorter;
   @Input() usedFilterType: string | undefined;
-  @Input() usedSortType: string | undefined;
+  //@Input() usedSortType: string | undefined;
   // @Output() filterChange = new EventEmitter<Filter>();
   // @Output() sorterChange = new EventEmitter<Sorter>();
 
@@ -53,16 +53,16 @@ export class SearcbarComponent implements OnInit {
     // this.filterChange.emit(this.filter);
   }
 
-  selectColumnForSort(column: string): void {
-    this.sorter.sortKey = column;
-    // this.sorterChange.emit(this.sorter);
-
-  }
-
-  changeSortAscend(): void {
-    this.sorter.sortAscend = !this.sorter.sortAscend;
-    // this.sorterChange.emit(this.sorter);
-
-  }
+//   selectColumnForSort(column: string): void {
+//     this.sorter.sortKey = column;
+//     //this.sorterChange.emit(this.sorter);
+// 
+//   }
+// 
+//   changeSortAscend(): void {
+//     this.sorter.sortAscend = !this.sorter.sortAscend;
+//     //this.sorterChange.emit(this.sorter);
+// 
+//   }
 
 }

@@ -8,6 +8,7 @@
             <p class="card-category"> Here is a subtitle for this table</p>
           </div>
           <div class="card-body">
+            <app-searchbar [(filter)]="filter" [usedFilterType]="'search'"></app-searchbar>
             <div class="table-responsive">
               <table class="table">
                 <thead class=" text-primary">
