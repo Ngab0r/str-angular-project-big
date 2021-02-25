@@ -11,6 +11,7 @@
             <div class="table-responsive">
               <table class="table">
                 <thead class=" text-primary">
+                  <th>image</th>
                   <th>id</th>
                   <th>name</th>
                   <th>title</th>
@@ -31,6 +32,7 @@
                     <!-- 2. - Observable 
             <tr *ngFor="let product of productList | async  ">
           -->
+                    <td><img [src] ="product.image" class="thumbnail" alt="product.name"></td>
                     <td>{{ product.id }}</td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.title }}</td>
