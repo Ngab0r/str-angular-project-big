@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-6 offset-3 mt-5">
+        <form #productFrom="ngForm" (ngSubmit)="onFormSubmit(productFrom)" ngNativeValidate>
+            <div class="form-group">
+                <label>Id</label>
+                <input [(ngModel)]="producttt.id" name="id" type="number" class="form-control" pattern="[0-9]{0,4}">
+                <div [hidden]="productFrom.controls.id?.valid" class="text-danger">
+                    Az id minimum 2 maximum 4 karakter legyen!
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input [(ngModel)]="producttt.name" name="name" type="text" class="form-control" pattern=".{2,30}"
+                    required>
+                <div [hidden]="productFrom.controls.name?.valid" class="text-danger">
+                    Az name minimum 2 maximum 4 karakter legyen!
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Title</label>
+                <input [(ngModel)]="producttt.title" name="title" type="text" class="form-control" pattern=".{2,20}"
+                    required>
+                <div [hidden]="productFrom.controls.title?.valid" class="text-danger">
+                    A title minimum 2 maximum 20 karakter legyen!
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Year</label>
+                <input [(ngModel)]="producttt.year" name="year" type="number" class="form-control" pattern="[0-9]{4}"
+                    required>
+                <div [hidden]="productFrom.controls.year?.valid" class="text-danger">
+                    A year minimum 2 maximum 20 karakter legyen!
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Type</label>
+                <input [(ngModel)]="producttt.type" name="type" type="text" class="form-control" pattern=".{1,20}"
+                    required>
+                <div [hidden]="productFrom.controls.type?.valid" class="text-danger">
+                    A type minimum 2 maximum 20 karakter legyen!
+                </div>
+            </div>
+            <div class="form-group">
+                <label>CatID</label>
+                <input [(ngModel)]="producttt.catID" name="catID" type="number" class="form-control"
+                    pattern="[0-9]{0,10}" required>
+                <div [hidden]="productFrom.controls.catID?.valid" class="text-danger">
+                    A catID minimum 2 maximum 20 karakter legyen!
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input [(ngModel)]="producttt.description" name="description" type="text" class="form-control"
+                    pattern=".{1,50}" required>
+                <div [hidden]="productFrom.controls.description?.valid" class="text-danger">
+                    A description minimum 2 maximum 20 karakter legyen!
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input [(ngModel)]="producttt.price" name="price" type="number" class="form-control" pattern="[0-9]+"
+                    required>
+                <div [hidden]="productFrom.controls.price?.valid" class="text-danger">
+                    A price minimum 2 maximum 20 karakter legyen!
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Featured</label>
+                <input [(ngModel)]="producttt.featured" name="featured" type="checkbox" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Active</label>
+                <input [(ngModel)]="producttt.active" name="active" type="checkbox" class="form-control">
+            </div>
+            <button [disabled]="productFrom.invalid || updating" class="btn btn-block btn-primary">
+                <i *ngIf="!updating" class="fa fa-save"></i>
+                <i *ngIf="updating" class="fa fa-refresh"></i>
+            </button>
+        </form>
+        <button class="btn btn-block btn-danger" (click)="delete()">
+            <i class="fa fa-trash"></i>
+        </button>
+    </div>
+</div>

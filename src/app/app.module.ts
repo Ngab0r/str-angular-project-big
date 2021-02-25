@@ -34,6 +34,7 @@ import { SorterPipe } from './pipe/sorter.pipe';
 import { ProductPropertyFilterPipe } from './pipe/product-property-filter.pipe';
 import { SearchbarComponent } from './common/searchbar/searchbar.component';
 import { TestEditorComponent } from './editor/test-editor/test-editor.component';
+import { ProductEditorComponent } from './editor/product-editor/product-editor.component';
 
 
 @NgModule({
@@ -68,6 +69,8 @@ import { TestEditorComponent } from './editor/test-editor/test-editor.component'
     ProductPropertyFilterPipe,
 
     SearchbarComponent,
+
+    ProductEditorComponent,
 
 
   ],
