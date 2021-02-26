@@ -5,11 +5,11 @@ import { TestService } from '../../service/test.service';
 import { Test } from '../../model/test';
 
 @Component({
-  selector: 'app-test-editor',
-  templateUrl: './test-editor.component.html',
-  styleUrls: ['./test-editor.component.css']
+  selector: 'app-test2-editor',
+  templateUrl: './test2-editor.component.html',
+  styleUrls: ['./test2-editor.component.css']
 })
-export class TestEditorComponent implements OnInit {
+export class Test2EditorComponent implements OnInit {
 
   testtt: Test = new Test();
   updating: boolean = false;
