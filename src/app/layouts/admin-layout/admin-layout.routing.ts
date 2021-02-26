@@ -11,6 +11,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
 import { TestComponent } from '../../test/test.component'
 import { TestEditorComponent } from '../../editor/test-editor/test-editor.component'
+import { Test2EditorComponent } from '../../editor/test2-editor/test2-editor.component'
 
 import { ProductComponent } from 'app/product/product.component';
 import { OrderComponent } from 'app/order/order.component';
@@ -63,7 +64,7 @@ export const AdminLayoutRoutes: Routes = [
     //     }]
     // }
     { path: 'test', component: TestComponent },
-    { path: 'testeditor/:idOrName', component: TestEditorComponent },
+    { path: 'testeditor/:idOrName', component: Test2EditorComponent },
 
     { path: 'producteditor/:idOrName', component: ProductEditorComponent },
     { path: 'product', component: ProductComponent },

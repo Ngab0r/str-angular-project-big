@@ -1,32 +1,16 @@
 <div class="row">
   <div class="col-6 offset-3 mt-5">
     <form #productFrom="ngForm" (ngSubmit)="onFormSubmit(productFrom)" ngNativeValidate>
-      <div class="form-group">
-        <label>Id</label>
-        <input [(ngModel)]="testtt.id" name="id" type="number" class="form-control" pattern=".{0,4}">
-        <div [hidden]="productFrom.controls.id?.valid" class="text-danger">
-          Az id minimum 2 maximum 4 karakter legyen!
+      <div class="form-group" *ngFor="let attributes of htmlInputAttributes">
+        <label>{{ attributes.text }}</label>
+        <div [hidden]="attributes.inputType !== 'text'">
+          <input [(ngModel)]="editedItemType[attributes.key]" [name]="attributes.key" type="text" class="form-control" [pattern]="attributes.pattern">
+          <div [hidden]="productFrom.controls[attributes.key]?.valid" class="text-danger">
+            A(z) {{attributes.text}} {{ attributes.errormsg }}
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Zip</label>
-        <input [(ngModel)]="testtt.zip" name="zip" type="text" class="form-control" pattern=".{2,7}" required>
-        <div [hidden]="productFrom.controls.zip?.valid" class="text-danger">
-          Az zip minimum 2 maximum 4 karakter legyen!
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Country</label>
-        <input [(ngModel)]="testtt.country" name="country" type="text" class="form-control" pattern=".{2,20}" required>
-        <div [hidden]="productFrom.controls.country?.valid" class="text-danger">
-          A country minimum 2 maximum 20 karakter legyen!
-        </div>
-      </div>
-      <div class="form-group">
-        <label>City</label>
-        <input [(ngModel)]="testtt.city" name="city" type="text" class="form-control" pattern=".{2,20}" required>
-        <div [hidden]="productFrom.controls.city?.valid" class="text-danger">
-          A city minimum 2 maximum 20 karakter legyen!
+        <div [hidden]="attributes.inputType !== 'boolean'">
+          <input [(ngModel)]="editedItemType[attributes.key]" [name]="attributes.key" type="checkbox" class="form-control">
         </div>
       </div>
       <button [disabled]="productFrom.invalid || updating" class="btn btn-block btn-primary">
