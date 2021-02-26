@@ -31,16 +31,17 @@ export class ConfigService {
 
 
   tableCols: ITableCol[] = [
-    { key: 'id', text: 'Id', editable: false, inputType: 'text' },
-    { key: 'catID', text: 'Category Id', editable: true, inputType: 'text' },
-    { key: 'name', text: 'Name', editable: true, inputType: 'text' },
-    { key: 'description', text: 'Description', editable: true, inputType: 'text' },
     { key: 'image', text: 'Image', editable: true, inputType: 'text' },
+    { key: 'id', text: 'Id', editable: false, inputType: 'text' },
+    { key: 'name', text: 'Name', editable: true, inputType: 'text' },
+    { key: 'title', text: 'Stock', editable: true, inputType: 'text' },
+    { key: 'year', text: 'Active', editable: true, inputType: 'checkbox' },
+    { key: 'type', text: 'Active', editable: true, inputType: 'checkbox' },
+    { key: 'catID', text: 'Category Id', editable: true, inputType: 'text' },
+    { key: 'description', text: 'Description', editable: true, inputType: 'text' },
     { key: 'price', text: 'Price', editable: true, inputType: 'text' },
-    { key: 'stock', text: 'Stock', editable: true, inputType: 'text' },
     { key: 'featured', text: 'Featured', editable: true, inputType: 'checkbox' },
-    { key: 'active', text: 'Active', editable: true, inputType: 'checkbox' },
-    { key: 'discount', text: 'Discount', editable: true, inputType: 'checkbox' }
+    { key: 'active', text: 'Discount', editable: true, inputType: 'checkbox' }
   ];
 
   searchByProperties: string[] = ['name', 'description', 'price'];
