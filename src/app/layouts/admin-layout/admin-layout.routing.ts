@@ -65,7 +65,7 @@ export const AdminLayoutRoutes: Routes = [
     // }
     { path: 'test', component: TestComponent },
     { path: 'testeditor/:idOrName', component: TestEditorComponent },
-    { path: 'testeditor2/:key/:idOrName', component: Test2EditorComponent },
+    { path: 'editor/:key/:idOrName', component: Test2EditorComponent },
 
     { path: 'producteditor/:idOrName', component: ProductEditorComponent },
     { path: 'product', component: ProductComponent },

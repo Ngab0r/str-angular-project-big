@@ -5,5 +5,6 @@ export class TableCol {
     editable: boolean;
     inputType: string;
     pattern: string;
-    validateMessage: string;
+    errormsg: string;
+    isRequired: boolean;
 }
