@@ -10,6 +10,7 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
 import { TestComponent } from '../../test/test.component'
+import { EditorComponent } from '../../editor/editor.component'
 import { TestEditorComponent } from '../../editor/test-editor/test-editor.component'
 import { Test2EditorComponent } from '../../editor/test2-editor/test2-editor.component'
 
@@ -65,6 +66,7 @@ export const AdminLayoutRoutes: Routes = [
     // }
     { path: 'test', component: TestComponent },
     { path: 'testeditor/:idOrName', component: Test2EditorComponent },
+    { path: 'editor/:page/:idOrName', component: EditorComponent },
 
     { path: 'producteditor/:idOrName', component: ProductEditorComponent },
     { path: 'product', component: ProductComponent },
