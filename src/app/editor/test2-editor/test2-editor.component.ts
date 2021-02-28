@@ -38,7 +38,7 @@ export class Test2EditorComponent implements OnInit {
 
   // // keys: string[] = Object.keys(this.sampleObj);
 
-  htmlInputAttributes: any;
+  htmlInputAttributes: TableCol[] = [];
 
 
   // Ez egyelőre nem kell
@@ -131,7 +131,7 @@ export class Test2EditorComponent implements OnInit {
           { key: 'description', text: 'Description', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
           { key: 'price', text: 'Price', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
           { key: 'featured', text: 'Featured', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
-          { key: 'active', text: 'Discount', editable: true, inputType: 'checkbox', pattern: '.{2,100}', isRequired: true }
+          { key: 'active', text: 'Discount', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: '', isRequired: true }
         ] :
         this.page === 'category' ?
           [
@@ -145,7 +145,7 @@ export class Test2EditorComponent implements OnInit {
             { key: 'description', text: 'Description', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
             { key: 'price', text: 'Price', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
             { key: 'featured', text: 'Featured', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
-            { key: 'active', text: 'Discount', editable: true, inputType: 'checkbox', pattern: '.{2,100}', isRequired: true }
+            { key: 'active', text: 'Discount', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: '', isRequired: true }
           ] :
           this.page === 'customer' ?
             [
@@ -159,7 +159,7 @@ export class Test2EditorComponent implements OnInit {
               { key: 'description', text: 'Description', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
               { key: 'price', text: 'Price', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
               { key: 'featured', text: 'Featured', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
-              { key: 'active', text: 'Discount', editable: true, inputType: 'checkbox', pattern: '.{2,100}', isRequired: true }
+              { key: 'active', text: 'Discount', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: '', isRequired: true }
             ] :
             this.page === 'product' ?
               [
