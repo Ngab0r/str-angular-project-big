@@ -36,6 +36,7 @@ import { SearchbarComponent } from './common/searchbar/searchbar.component';
 import { TestEditorComponent } from './editor/test-editor/test-editor.component';
 import { ProductEditorComponent } from './editor/product-editor/product-editor.component';
 import { Test2EditorComponent } from './editor/test2-editor/test2-editor.component';
+import { EditorComponent } from './editor/editor.component';
 
 
 @NgModule({
@@ -74,6 +75,8 @@ import { Test2EditorComponent } from './editor/test2-editor/test2-editor.compone
     ProductEditorComponent,
 
     Test2EditorComponent,
+
+    EditorComponent,
 
   ],
   providers: [],
