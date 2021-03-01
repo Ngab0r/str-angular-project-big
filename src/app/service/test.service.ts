@@ -4,7 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Test } from '../model/test';
 
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+
+import { filter, mergeMap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +29,7 @@ export class TestService {
 
   // test.service.ts fileban levo adatok megjelenitesehez
   list$: BehaviorSubject<Test[]> = new BehaviorSubject<Test[]>([]);
+    
 
   constructor(
     private http: HttpClient
