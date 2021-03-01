@@ -74,6 +74,8 @@ export const AdminLayoutRoutes: Routes = [
 
     { path: 'category', component: CategoryComponent },
     { path: 'customer', component: CustomerComponent },
+    { path: 'testeditor/:idOrName', component: TestEditorComponent },
+    { path: 'product', component: ProductComponent },
     { path: 'bill', component: BillComponent },
 
     { path: 'dashboard', component: DashboardComponent },

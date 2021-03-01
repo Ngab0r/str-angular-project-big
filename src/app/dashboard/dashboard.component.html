@@ -3,19 +3,19 @@
       <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
-                  <div class="card-header card-header-warning card-header-icon">
+                  <div class="card-header card-header-warning card-header-icon" >
                       <div class="card-icon">
-                          <i class="material-icons">content_copy</i>
+                          <i class="material-icons">music_note</i>
                       </div>
-                      <p class="card-category">Used Space</p>
-                      <h3 class="card-title">49/50
-                          <small>GB</small>
+                      <p class="card-category">Active Products</p>
+                      <h3 class="card-title" *ngIf="activeProds | async; let list">{{list.length}}
+                          <small>pcs</small>
                       </h3>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
-                          <i class="material-icons text-danger">warning</i>
-                          <a href="javascript:void(0)">Get More Space...</a>
+                          <i class="material-icons text-info">info</i>
+                          <a href="javascript:void(0)">Get More info...</a>
                       </div>
                   </div>
               </div>
@@ -24,10 +24,10 @@
               <div class="card card-stats">
                   <div class="card-header card-header-success card-header-icon">
                       <div class="card-icon">
-                          <i class="material-icons">store</i>
+                          <i class="material-icons">account_circle</i>
                       </div>
-                      <p class="card-category">Revenue</p>
-                      <h3 class="card-title">$34,245</h3>
+                      <p class="card-category">Active customers</p>
+                      <h3 class="card-title" *ngIf="activeCustomers | async; let list">{{list.length}}</h3>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
@@ -40,14 +40,14 @@
               <div class="card card-stats">
                   <div class="card-header card-header-danger card-header-icon">
                       <div class="card-icon">
-                          <i class="material-icons">info_outline</i>
+                          <i class="material-icons">shopping_cart</i>
                       </div>
-                      <p class="card-category">Fixed Issues</p>
-                      <h3 class="card-title">75</h3>
+                      <p class="card-category">Pending orders</p>
+                      <h3 class="card-title" *ngIf="pendingOrders | async; let list">{{list.length}}</h3>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
-                          <i class="material-icons">local_offer</i> Tracked from Github
+                        <i class="material-icons">date_range</i> Last 24 Hours
                       </div>
                   </div>
               </div>
@@ -56,14 +56,14 @@
               <div class="card card-stats">
                   <div class="card-header card-header-info card-header-icon">
                       <div class="card-icon">
-                          <i class="fa fa-twitter"></i>
+                          <i class="material-icons">request_page</i>
                       </div>
-                      <p class="card-category">Followers</p>
-                      <h3 class="card-title">+245</h3>
+                      <p class="card-category">Pending bills</p>
+                      <h3 class="card-title" *ngIf="pendingBills | async; let list">{{list.length}}</h3>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
-                          <i class="material-icons">update</i> Just Updated
+                        <i class="material-icons">date_range</i> Last 24 Hours
                       </div>
                   </div>
               </div>

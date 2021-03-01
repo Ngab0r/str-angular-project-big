@@ -1,6 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
 
+// dashboard widged data request
+import { BehaviorSubject, Observable } from 'rxjs';
+
+import { TestService } from '../service/test.service';
+import { Test } from '../model/test';
+
+import { ProductService } from '../service/product.service';
+import { Product } from '../model/product';
+
+import { CustomerService } from '../service/customer.service';
+import { Customer } from '../model/customer';
+
+import { OrderService } from '../service/order.service';
+import { Order } from '../model/order';
+
+import { BillService } from '../service/bill.service';
+import { Bill } from '../model/bill';
+
+import { map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -8,7 +28,49 @@ import * as Chartist from 'chartist';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  // dashboard widged data for test
+  /* testList$: BehaviorSubject<Test[]> = this.testService.list$;
+  activeTest: Observable<Test[]> = this.testList$.pipe(
+    map(products => products.filter(testdata => testdata.active))
+  ); */
+
+  // active prods dashboard widget data
+  testList2$: BehaviorSubject<Product[]> = this.productService.list$;
+  activeProds: Observable<Product[]> = this.testList2$.pipe(
+    map(products => products.filter(item => item.active))
+  );
+
+  // active customers dashboard widget data
+  testList3$: BehaviorSubject<Customer[]> = this.customerService.list$;
+  activeCustomers: Observable<Customer[]> = this.testList3$.pipe(
+    map(products => products.filter(item => item.active))
+  );  
+
+  // pending orders dashboard widget data
+  testList4$: BehaviorSubject<Order[]> = this.orderService.list$;
+  filterValues = ["new"];
+  pendingOrders: Observable<Order[]> = this.testList4$.pipe(
+    map(order => order.filter(item => item.status = "new"))
+  );
+
+  // pending bills dashboard widget data
+  testList5$: BehaviorSubject<Bill[]> = this.billService.list$;
+  filterValues2 = ["new"];
+  pendingBills: Observable<Bill[]> = this.testList5$.pipe(
+    map(bill => bill.filter(item => this.filterValues2.indexOf(item.status) > -1))
+  );  
+
+
+  constructor(
+
+    // dashboard widged data request
+    //private testService: TestService,
+    private productService: ProductService,
+    private customerService: CustomerService,
+    private orderService: OrderService,
+    private billService: BillService,
+  
+    ) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -66,6 +128,15 @@ export class DashboardComponent implements OnInit {
       seq2 = 0;
   };
   ngOnInit() {
+
+    // dashboard widged data request
+    //this.testService.getAll();
+    this.productService.getAll();
+    this.customerService.getAll();
+    this.orderService.getAll();
+    this.billService.getAll();
+
+
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {

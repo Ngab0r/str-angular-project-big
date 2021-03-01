@@ -16,7 +16,8 @@ export interface IOrder {
     customerID: number;
     items: Array<IOrderedItem>; 
     amount: number;
-    status: OrderStatus;
+    //status: OrderStatus;
+    status: string;
 }
 
 export class orderedItem implements IOrderedItem {
@@ -29,7 +30,8 @@ export class Order implements IOrder {
     customerID: number = 0;
     items: Array<IOrderedItem> = []; 
     amount: number = 0;
-    status: OrderStatus = OrderStatus.new;
+    //status: OrderStatus = OrderStatus.new;
+    status = "new | shipped";
 
     constructor(orderedItems: Array<IOrderedItem> = []) {
         this.items = orderedItems;
