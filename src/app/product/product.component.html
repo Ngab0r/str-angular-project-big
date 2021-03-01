@@ -1,4 +1,54 @@
-<div class="main-content">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">Simple Table</h4>
+          <p class="card-category"> Here is a subtitle for this table</p>
+        </div>
+        <div class="card-body">
+          <app-searchbar [(filter)]="filter" [usedFilterType]="'admin'"></app-searchbar>
+
+
+          <mat-table cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="tableDrop($event)"
+            [dataSource]="dataSource ">
+
+            <ng-container *ngFor=" let column of columns; let i=index" [matColumnDef]="column.name">
+              <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x">
+                {{ column.title }}
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">{{ element[column.name] }}
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="image">
+              <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <img [src]="row.image" class="thumbnail" alt="row.name">
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="edit">
+              <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <button [routerLink]="'/editor/product/' + [row.id]" class="btn btn-primary"><i
+                    class="fa fa-edit"></i></button>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns" class="tableHeaderRow" #tableHeaderRow></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+
+          </mat-table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- <div class="main-content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -58,16 +108,16 @@
                   </th>
                 </thead>
                 <tbody>
-                  <!-- 2. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez
-              addressList$ a product.component.ts-ben van
-          -->
-                  <tr
-                    *ngFor="let product of productList$ | async | filter:filter.phrase:filter.selectedKeyForSearch:filter.phrase2 | sorter:sorter.sortKey:sorter.sortAscend">
+                  <!-- 2. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez -->
+  <!-- addressList$ a product.component.ts-ben van -->
 
-                    <!-- 2. - Observable 
+  <!-- <tr
+                    *ngFor="let product of productList$ | async | filter:filter.phrase:filter.selectedKeyForSearch:filter.phrase2 | sorter:sorter.sortKey:sorter.sortAscend"> -->
+
+  <!-- 2. - Observable 
             <tr *ngFor="let product of productList | async  ">
           -->
-                    <td><img [src]="product.image" class="thumbnail" alt="product.name"></td>
+  <!-- <td><img [src]="product.image" class="thumbnail" alt="product.name"></td>
                     <td>{{ product.id }}</td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.title }}</td>
@@ -93,4 +143,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
