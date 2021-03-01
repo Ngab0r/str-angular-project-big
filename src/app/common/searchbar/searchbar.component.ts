@@ -13,6 +13,8 @@ export class SearchbarComponent implements OnInit {
   @Input() filter: Filter;
   //@Input() sorter: Sorter;
   @Input() usedFilterType: string | undefined;
+  @Output() changeFilter: EventEmitter<Filter> = new EventEmitter();
+
   //@Input() usedSortType: string | undefined;
   // @Output() filterChange = new EventEmitter<Filter>();
   // @Output() sorterChange = new EventEmitter<Sorter>();
@@ -35,11 +37,13 @@ export class SearchbarComponent implements OnInit {
 
     this.filter.phrase = (event.target as HTMLInputElement).value;
     // this.filterChange.emit(this.filter);
+    this.changeFilter.emit(this.filter);
 
   }
   onChangePhrase2(event: Event): void {
     this.filter.phrase2 = (event.target as HTMLInputElement).value;
     // this.filterChange.emit(this.filter);
+    this.changeFilter.emit(this.filter);
 
   }
 
@@ -50,19 +54,21 @@ export class SearchbarComponent implements OnInit {
       this.filter.phrase = '';
       this.filter.phrase2 = '';
     }
+    this.changeFilter.emit(this.filter);
+
     // this.filterChange.emit(this.filter);
   }
 
-//   selectColumnForSort(column: string): void {
-//     this.sorter.sortKey = column;
-//     //this.sorterChange.emit(this.sorter);
-// 
-//   }
-// 
-//   changeSortAscend(): void {
-//     this.sorter.sortAscend = !this.sorter.sortAscend;
-//     //this.sorterChange.emit(this.sorter);
-// 
-//   }
+  //   selectColumnForSort(column: string): void {
+  //     this.sorter.sortKey = column;
+  //     //this.sorterChange.emit(this.sorter);
+  // 
+  //   }
+  // 
+  //   changeSortAscend(): void {
+  //     this.sorter.sortAscend = !this.sorter.sortAscend;
+  //     //this.sorterChange.emit(this.sorter);
+  // 
+  //   }
 
 }

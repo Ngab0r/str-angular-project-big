@@ -7,7 +7,6 @@ export class FilterPipe implements PipeTransform {
 
 
   transform(value: any[], phrase: string, key: string = '', phrase2?: string): any {
-    console.log(value);
     if (!Array.isArray(value) || !phrase || !key) {
       return value;
     }

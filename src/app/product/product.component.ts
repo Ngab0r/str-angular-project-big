@@ -8,6 +8,7 @@ import { Filter } from 'app/model/filter';
 import { Sorter } from 'app/model/sorter';
 import { MatTableDataSource } from '@angular/material/table';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { FilterPipe } from '../pipe/filter.pipe';
 
 @Component({
   selector: 'app-product',
@@ -106,9 +107,11 @@ export class ProductComponent implements OnInit {
       title: 'Active'
     },
   ];
+  filterPipe: FilterPipe = new FilterPipe();
 
   constructor(
     private productService: ProductService,
+
   ) {
     // 2.) - Observable  
     //  this.addressX = this.productService.getAll();
@@ -119,21 +122,37 @@ export class ProductComponent implements OnInit {
     this.productService.getAll();
     this.productList$.subscribe(list => {
       this.dataSource = new MatTableDataSource(list);
-      this.dataSource.filter = this.filter.selectedKeyForSearch;
+      this.changeFilterPredicate();
+    });
+    console.log(this.dataSource);
 
+    // this.dataSource.filterPredicate = function (data, filter: string): boolean {
+    //   var dataa = this.productList$.type.filter(
+    //     element => element.position === data.position);
+    //   return data.position.toString().toLowerCase().includes(filter)
+    //     || data.symbol.toLowerCase().includes(filter)
+    //     || data.position.toString().toLowerCase() === filter
+    //     || dataa[0].name.toString().toLowerCase().includes(filter.toLowerCase());
+    // };
+    // console.log(this.dataSource);
+    this.dataSource.filter = 'abba';
+    this.dataSource.filter = 'abba';
+  }
+
+
+  changeFilter(filter: Filter): void {
+    console.log(filter.phrase);
+    console.log(filter.selectedKeyForSearch);
+    this.filter = filter;
+    this.productList$.subscribe(list => {
+      this.dataSource = new MatTableDataSource(this.filterPipe.transform(list, this.filter.phrase, this.filter.selectedKeyForSearch, this.filter.phrase2));
+      // this.changeFilterPredicate();
     });
 
-    this.dataSource.filterPredicate = function (data, filter: string): boolean {
-      var dataa = this.productList$.name.filter(
-        element => element.position === data.position);
-      return data.position.toString().toLowerCase().includes(filter)
-        || data.symbol.toLowerCase().includes(filter)
-        || data.position.toString().toLowerCase() === filter
-        || dataa[0].name.toString().toLowerCase().includes(filter.toLowerCase());
-    };
-    console.log(this.dataSource);
-    this.dataSource.filter = 'abba';
-    this.dataSource.filter = 'abba';
+    // this.changeFilterPredicate();
+    // this.dataSource.filter = this.filter.phrase;
+    // console.log(this.dataSource);
+
   }
 
   selectColumnForSort(col: string): void {
@@ -158,5 +177,36 @@ export class ProductComponent implements OnInit {
     return array
   }
 
+
+  changeFilterPredicate() {
+
+    if (this.filter.selectedKeyForSearch === 'price') {
+      if (!isNaN(parseInt(this.filter.phrase)) || !isNaN(parseInt(this.filter.phrase2))) {
+        if (!isNaN(parseInt(this.filter.phrase)) && !isNaN(parseInt(this.filter.phrase2))) {
+          console.log(this.filter.selectedKeyForSearch, 'juhé');
+          this.dataSource.filterPredicate =
+            (data: Product, filter: string) =>
+              data[this.filter.selectedKeyForSearch].filter(item => parseInt(this.filter.phrase) <= parseInt(item[this.filter.selectedKeyForSearch]) && parseInt(this.filter.phrase2) >= parseInt(item[this.filter.selectedKeyForSearch]));;
+        }
+        if (!isNaN(parseInt(this.filter.phrase))) {
+          this.dataSource.filterPredicate =
+            (data: Product, filter: string) =>
+              data[this.filter.selectedKeyForSearch].filter(item => parseInt(this.filter.phrase) <= parseInt(item[this.filter.selectedKeyForSearch]));
+        }
+        if (!isNaN(parseInt(this.filter.phrase2))) {
+          this.dataSource.filterPredicate =
+            (data: Product, filter: string) =>
+              data[this.filter.selectedKeyForSearch].filter(item => parseInt(this.filter.phrase2) >= parseInt(item[this.filter.selectedKeyForSearch]));
+        }
+      }
+      else {
+        this.dataSource.filterPredicate =
+          (data: Product, filter: string) => data[this.filter.selectedKeyForSearch];
+      }
+    }
+
+    this.dataSource.filterPredicate =
+      (data: Product, filter: string) => data[this.filter.selectedKeyForSearch].toString().toLowerCase().includes(filter.toLowerCase());
+  }
 
 }

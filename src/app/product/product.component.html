@@ -7,11 +7,11 @@
           <p class="card-category"> Here is a subtitle for this table</p>
         </div>
         <div class="card-body">
-          <app-searchbar [(filter)]="filter" [usedFilterType]="'admin'"></app-searchbar>
-
+          <app-searchbar [(filter)]="filter" (changeFilter)="changeFilter($event)" [usedFilterType]="'admin'">
+          </app-searchbar>
 
           <mat-table cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="tableDrop($event)"
-            [dataSource]="dataSource ">
+            [dataSource]="dataSource">
 
             <ng-container *ngFor=" let column of columns; let i=index" [matColumnDef]="column.name">
               <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x">
