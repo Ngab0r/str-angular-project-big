@@ -2,6 +2,13 @@
     <div class="col-6 offset-3 mt-5">
         <form #productFrom="ngForm" (ngSubmit)="onFormSubmit(productFrom)" ngNativeValidate>
             <div class="form-group">
+                <label>Image</label>
+                <input [(ngModel)]="producttt.image" name="image" type="text" class="form-control" pattern=".{1,100}">
+                <div [hidden]="productFrom.controls.image?.valid" class="text-danger">
+                    Az image path maximum 100 karakter legyen!
+                </div>
+            </div>
+            <div class="form-group">
                 <label>Id</label>
                 <input [(ngModel)]="producttt.id" name="id" type="number" class="form-control" pattern="[0-9]{0,4}">
                 <div [hidden]="productFrom.controls.id?.valid" class="text-danger">

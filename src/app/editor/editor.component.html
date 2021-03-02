@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-6 offset-3 mt-5">
+    <form #productFrom="ngForm" (ngSubmit)="onFormSubmit(productFrom)" ngNativeValidate>
+      <div class="form-group" *ngFor="let attributes of htmlInputAttributes">
+<!--
+        <label>{{ attributes.text }}</label>
+        <div>
+          <input [(ngModel)]="editedItemType[attributes.key]" [name]="attributes.key" [type]="attributes.inputType" class="form-control" [pattern]="attributes.pattern">
+          <div [hidden]="productFrom.controls[attributes.key]?.valid || attributes.inputType === 'checkbox' " class="text-danger">
+            A(z) {{attributes.text}} {{ attributes.errormsg }}
+          </div>
+        </div>
+-->
+        <div [hidden]="attributes.inputType !== 'text'">
+          <input [(ngModel)]="editedItemType[attributes.key]" [name]="attributes.key" type="text" class="form-control" [pattern]="attributes.pattern">
+          <div [hidden]="productFrom.controls[attributes.key]?.valid" class="text-danger">
+            A(z) {{attributes.text}} {{ attributes.errormsg }}
+          </div>
+        </div>
+        <div [hidden]="attributes.inputType !== 'number'">
+          <input [(ngModel)]="editedItemType[attributes.key]" [name]="attributes.key" type="number" class="form-control" [pattern]="attributes.pattern">
+          <div [hidden]="productFrom.controls[attributes.key]?.valid" class="text-danger">
+            A(z) {{attributes.text}} {{ attributes.errormsg }}
+          </div>
+        </div>
+        <div [hidden]="attributes.inputType !== 'checkbox'">
+          <input [(ngModel)]="editedItemType[attributes.key]" [name]="attributes.key" type="checkbox" class="form-control">
+        </div>
+      </div>
+      <button [disabled]="productFrom.invalid || updating" class="btn btn-block btn-primary">
+        <i *ngIf="!updating" class="fa fa-save"></i>
+        <i *ngIf="updating" class="fa fa-refresh"></i>
+      </button>
+    </form>
+    <button class="btn btn-block btn-danger" (click)="delete()">
+      <i class="fa fa-trash"></i>
+    </button>
+  </div>
+</div>

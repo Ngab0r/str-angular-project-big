@@ -5,4 +5,6 @@ export class Test {
     city: string = '';
     street: string = '';
     notes: string = '';
+    price: number = 0;
+    active: boolean = true;
 }
