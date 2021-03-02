@@ -57,7 +57,7 @@ i {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.mat-header-cell {
+.cdk-drag {
   cursor: pointer;
   border: dotted 3px transparent;
 }
