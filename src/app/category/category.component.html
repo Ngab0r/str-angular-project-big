@@ -20,6 +20,9 @@
                                     <th>
                                         Description
                                     </th>
+                                    <th>
+                                        Edit
+                                    </th>
                                 </thead>
                                 <tbody>
                                 <!-- 1. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez
@@ -33,6 +36,12 @@
                                     <td>{{ cat.id }}</td>
                                     <td>{{ cat.name }}</td>
                                     <td>{{ cat.description }}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button [routerLink]="'/editor/category/' +[cat.id]"
+                                                    class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            </div>
+                                        </td>
                                   </tr>
                                 </tbody>
                             </table>

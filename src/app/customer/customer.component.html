@@ -20,7 +20,10 @@
                                     <th>address City</th>
                                     <th>address Street</th>
                                     <th>active</th>
-                                </thead>
+                                     <th>
+                                        Edit
+                                    </th>
+                               </thead>
                                 <tbody>
                                     <!-- 2. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez
                 addressList$ a product.component.ts-ben van
@@ -39,6 +42,12 @@
                                         <td>{{ customer.address.city }}</td>
                                         <td>{{ customer.address.street }}</td>
                                         <td>{{ customer.active }}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button [routerLink]="'/editor/customer/' +[customer.id]"
+                                                    class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
