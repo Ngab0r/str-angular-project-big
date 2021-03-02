@@ -15,6 +15,9 @@
                                     <th>orderID</th>
                                     <th>status</th>
                                     <th>amount</th>
+                                    <th>
+                                        Edit
+                                    </th>
                                 </thead>
                                 <tbody>
                                     <!-- 2. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez
@@ -29,6 +32,12 @@
                                         <td>{{ bill.orderID }}</td>
                                         <td>{{ bill.status }}</td>
                                         <td>{{ bill.amount }}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button [routerLink]="'/editor/bill/' +[bill.id]"
+                                                    class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
