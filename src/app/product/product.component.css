@@ -22,9 +22,10 @@ th {
 }
 
 i {
-  position: absolute;
+  position: inline;
+  right: 0;
   margin-left: 0.5rem;
-  margin-top: 0.25rem;
+  /* margin-top: 0.25rem; */
 }
 
 .cdk-drag-preview {
