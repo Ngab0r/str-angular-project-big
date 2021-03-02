@@ -4,15 +4,13 @@
       <div class="form-group" *ngFor="let attributes of htmlInputAttributes">
         <label>{{ attributes.text }}</label>
         <div [hidden]="attributes.inputType !== 'text'">
-          <input [(ngModel)]="editedItemType[attributes.key]" [name]="attributes.key" type="text" class="form-control"
-            [pattern]="attributes.pattern">
+          <input [(ngModel)]="editedItemType[attributes.key]" [name]="attributes.key" type="text" class="form-control" [pattern]="attributes.pattern">
           <div [hidden]="productFrom.controls[attributes.key]?.valid" class="text-danger">
             A(z) {{attributes.text}} {{ attributes.errormsg }}
           </div>
         </div>
         <div [hidden]="attributes.inputType !== 'checkbox'">
-          <input [(ngModel)]="editedItemType[attributes.key]" [name]="attributes.key" type="checkbox"
-            class="form-control">
+          <input [(ngModel)]="editedItemType[attributes.key]" [name]="attributes.key" type="checkbox" class="form-control">
         </div>
       </div>
       <button [disabled]="productFrom.invalid || updating" class="btn btn-block btn-primary">
