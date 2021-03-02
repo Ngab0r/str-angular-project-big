@@ -69,7 +69,7 @@ export class ProductComponent implements OnInit {
   filterPipe: FilterPipe = new FilterPipe();
   sorterPipe: SorterPipe = new SorterPipe();
   subscribeForDeleteItem: Product = new Product();
-
+  productList;
   constructor(
     private productService: ProductService,
   ) {
@@ -80,6 +80,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getAll();
     this.productList$.subscribe(list => {
+      this.productList = list;
       this.dataSource = new MatTableDataSource(list);
     });
   }
@@ -95,16 +96,19 @@ export class ProductComponent implements OnInit {
   changeFilter(filter: Filter): void {
     this.filter = filter;
     this.productList$.subscribe(list => {
-      this.dataSource = new MatTableDataSource(this.filterPipe.transform(list, this.filter.phrase, this.filter.selectedKeyForSearch, this.filter.phrase2));
+      this.productList = this.filterPipe.transform(list, this.filter.phrase, this.filter.selectedKeyForSearch, this.filter.phrase2);
+      this.dataSource = new MatTableDataSource(this.productList);
+      this.sorting();
     });
   }
 
   selectColumnForSort(col: string): void {
     this.sorter.sortKey === col ? this.sorter.sortAscend = !this.sorter.sortAscend : this.sorter.sortAscend = true;
     this.sorter.sortKey = col;
-    this.productList$.subscribe(list => {
-      this.dataSource = new MatTableDataSource(this.sorterPipe.transform(list, this.sorter.sortKey, this.sorter.sortAscend));
-    });
+    this.sorting();
+  }
+  sorting() {
+    this.dataSource = new MatTableDataSource(this.sorterPipe.transform(this.productList, this.sorter.sortKey, this.sorter.sortAscend));
   }
 
   tableDrop(event: CdkDragDrop<string[]>) {
