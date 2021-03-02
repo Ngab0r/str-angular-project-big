@@ -37,6 +37,7 @@ import { TestEditorComponent } from './editor/test-editor/test-editor.component'
 import { ProductEditorComponent } from './editor/product-editor/product-editor.component';
 import { Test2EditorComponent } from './editor/test2-editor/test2-editor.component';
 import { EditorComponent } from './editor/editor.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { EditorComponent } from './editor/editor.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    ToastrModule.forRoot(), // ToastrModule added
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })

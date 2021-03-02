@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-6 offset-3 mt-5">
-        <form #productFrom="ngForm" (ngSubmit)="onFormSubmit(productFrom)" ngNativeValidate>
+        <form #productFrom="ngForm" (ngSubmit)="onFormSubmit(productFrom)" ngNativeValidate novalidate>
             <div class="form-group">
                 <label>Image</label>
                 <input [(ngModel)]="producttt.image" name="image" type="text" class="form-control" pattern=".{1,100}">
@@ -79,7 +79,7 @@
                 <label>Active</label>
                 <input [(ngModel)]="producttt.active" name="active" type="checkbox" class="form-control">
             </div>
-            <button [disabled]="productFrom.invalid || updating" class="btn btn-block btn-primary">
+            <button [disabled]="updating" class="btn btn-block btn-primary">
                 <i *ngIf="!updating" class="fa fa-save"></i>
                 <i *ngIf="updating" class="fa fa-refresh"></i>
             </button>
