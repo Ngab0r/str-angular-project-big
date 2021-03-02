@@ -39,7 +39,7 @@ export class ProductComponent implements OnInit {
     },
     {
       name: 'title',
-      title: 'Age'
+      title: 'Title'
     },
     {
       name: 'year',
@@ -82,8 +82,6 @@ export class ProductComponent implements OnInit {
     this.productList$.subscribe(list => {
       this.dataSource = new MatTableDataSource(list);
     });
-    this.dataSource.filter = 'abba';
-    this.dataSource.filter = 'abba';
   }
 
   subscribeForDelete(subscribeForDeleteItem: Product): void {
