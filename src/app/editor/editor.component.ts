@@ -6,8 +6,14 @@ import { TestService } from 'app/service/test.service';
 import { Test } from 'app/model/test';
 import { ProductService } from 'app/service/product.service';
 import { Product } from 'app/model/product';
+import { BillService } from 'app/service/bill.service';
+import { Bill } from 'app/model/bill';
 import { CategoryService } from 'app/service/category.service';
 import { Category } from 'app/model/category';
+import { CustomerService } from 'app/service/customer.service';
+import { Customer } from 'app/model/customer';
+import { OrderService } from 'app/service/order.service';
+import { Order } from 'app/model/order';
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
@@ -37,73 +43,67 @@ export class EditorComponent implements OnInit {
   // }
 
   //keys: string[] = Object.keys(this.model);
+  computeKey(startArray:string,longKey:string){
+      const arr = longKey.split('.')[0].split('[')[0];
+      const key = startArray+"['"+arr+"']"+longKey.replace(arr,'');
+      console.log('editedItem(attributes.key) = ' + key);
+      return(key);
+  }
   
   setHtmlInputAttributes(): void{
     this.htmlInputAttributes =
     this.page === 'bill' ?
     [
-    { key: 'image', text: 'Image', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'id', text: 'Id', editable: false, inputType: 'text', pattern: '[0-9]{1,100}', errormsg: 'számokból álljon (legfeljebb 100)!' },
-    { key: 'name', text: 'Name', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'title', text: 'Stock', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'year', text: 'Active', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'type', text: 'Active', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'catID', text: 'Category Id', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'description', text: 'Description', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'price', text: 'Price', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'featured', text: 'Featured', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'active', text: 'Discount', editable: true, inputType: 'checkbox', pattern: '.{2,100}' }
+    { key: 'id', subkeys:'', text: 'Id', editable: false, inputType: 'number', pattern: '[0-9]{1,100}', errormsg: 'számokból álljon (legfeljebb 100)!', isRequired: true },
+    { key: 'orderID', subkeys:'', text: 'Order Id', editable: true, inputType: 'number', pattern: '[0-9]{1,100}', errormsg: 'számokból álljon (legfeljebb 100)!', isRequired: true },
+    { key: 'amount', subkeys:'', text: 'Amount', editable: true, inputType: 'number', pattern: '[0-9]{1,10}', errormsg: 'maximum 10 darab számjegy legyen!', isRequired: true },
+    { key: 'status', subkeys:'', text: 'Status', editable: true, inputType: 'select', values: ['new','paid'], isRequired: true },
     ] : 
     this.page === 'category' ?
     [
-    { key: 'image', text: 'Image', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'id', text: 'Id', editable: false, inputType: 'text', pattern: '[0-9]{1,100}', errormsg: 'számokból álljon (legfeljebb 100)!' },
-    { key: 'name', text: 'Name', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'title', text: 'Stock', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'year', text: 'Active', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'type', text: 'Active', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'catID', text: 'Category Id', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'description', text: 'Description', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'price', text: 'Price', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'featured', text: 'Featured', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'active', text: 'Discount', editable: true, inputType: 'checkbox', pattern: '.{2,100}' }
+//    { key: 'image', subkeys:'', text: 'Image', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
+    { key: 'id', subkeys:'', text: 'Id', editable: false, inputType: 'number', pattern: '[0-9]{1,100}', errormsg: 'számokból álljon (legfeljebb 100)!', isRequired: true },
+    { key: 'name', subkeys:'', text: 'Name', editable: true, inputType: 'text', pattern: '.{1,100}', errormsg: 'maximum 100 karakter legyen!', isRequired: true },
+    { key: 'catID', subkeys:'', text: 'Category Id', editable: true, inputType: 'number', pattern: '.{1,32}', errormsg: 'maximum 32 darab számjegy legyen!', isRequired: true },
+    { key: 'description', subkeys:'', text: 'Description', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
     ] : 
     this.page === 'customer' ?
     [
-    { key: 'image', text: 'Image', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'id', text: 'Id', editable: false, inputType: 'text', pattern: '[0-9]{1,100}', errormsg: 'számokból álljon (legfeljebb 100)!' },
-    { key: 'name', text: 'Name', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'title', text: 'Stock', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'year', text: 'Active', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'type', text: 'Active', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'catID', text: 'Category Id', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'description', text: 'Description', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'price', text: 'Price', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'featured', text: 'Featured', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'active', text: 'Discount', editable: true, inputType: 'checkbox', pattern: '.{2,100}' }
+//    { key: 'image', subkeys:'', text: 'Image', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
+    { key: 'id', subkeys:'', text: 'Customer Id', editable: false, inputType: 'text', pattern: '[0-9]{1,100}', errormsg: 'számokból álljon (legfeljebb 100)!', isRequired: true },
+    { key: 'firstName', subkeys:'', text: 'First Name', editable: true, inputType: 'text', pattern: '.{1,100}', errormsg: 'maximum 100 karakter legyen!', isRequired: true },
+    { key: 'lastName', subkeys:'', text: 'Last Name', editable: true, inputType: 'text', pattern: '.{1,100}', errormsg: 'maximum 100 karakter legyen!', isRequired: true },
+    { key: 'email', subkeys:'', text: 'E-mail', editable: true, inputType: 'text', pattern: '[^@]{1,32}@[0-9a-zA-Z\._-]{1,32}', errormsg: 'tartalmazza a kikac karaktert, és előtte-utána maximum 32 darab karakter legyen!', isRequired: true },
+    { key: 'address', subkeys:'id', text: 'Address Id', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
+    { key: 'address', subkeys:'zip', text: 'Zip', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
+    { key: 'address', subkeys:'country', text: 'Country', editable: true, inputType: 'text', pattern: '.{2,25}', errormsg: 'minimum 2 maximum 25 karakter legyen!', isRequired: true },
+    { key: 'address', subkeys:'city', text: 'City', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
+    { key: 'address', subkeys:'street', text: 'Street', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
+    { key: 'address', subkeys:'notes', text: 'Notes', editable: true, inputType: 'text', pattern: '.{0,100}', errormsg: 'maximum 100 karakter legyen!', isRequired: false },
+    { key: 'active', subkeys:'', text: 'Active', editable: true, inputType: 'checkbox', pattern: '.{2,100}', isRequired: true },
+  ] :
+  this.page === 'product' ?
+  [
+    { key: 'image', subkeys:'', text: 'Image', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
+    { key: 'id', subkeys:'', text: 'Id', editable: false, inputType: 'number', pattern: '[0-9]{1,100}', errormsg: 'számokból álljon (legfeljebb 100)!', isRequired: true },
+    { key: 'title', subkeys:'', text: 'Title', editable: true, inputType: 'text', pattern: '.{1,100}', errormsg: 'maximum 100 karakter legyen!', isRequired: true },
+    { key: 'name', subkeys:'', text: 'Name', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
+    { key: 'year', subkeys:'', text: 'Year', editable: true, inputType: 'number', pattern: '[0-9]{4}', errormsg: '4 darab számból álljon!', isRequired: true },
+    { key: 'type', subkeys:'', text: 'Type', editable: true, inputType: 'text', pattern: '.{1,100}', errormsg: 'maximum 100 karakter legyen!', isRequired: true },
+    { key: 'catID', subkeys:'', text: 'Category Id', editable: true, inputType: 'number', pattern: '[0-9]{1,32}', errormsg: 'maximum 32 darab számjegy legyen!', isRequired: true },
+    { key: 'description', subkeys:'', text: 'Description', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
+    { key: 'price', subkeys:'', text: 'Price', editable: true, inputType: 'number', pattern: '[0-9]{1,32}', errormsg: 'maximum 32 darab számjegy legyen!', isRequired: true },
+    { key: 'featured', subkeys:'', text: 'Featured', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: '', isRequired: true },
+    { key: 'active', subkeys:'', text: 'Discount', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: '', isRequired: true },
     ] :
-    this.page === 'product' ?
     [
-    { key: 'image', text: 'Image', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'id', text: 'Id', editable: false, inputType: 'number', pattern: '[0-9]{1,100}', errormsg: 'számokból álljon (legfeljebb 100)!' },
-    { key: 'name', text: 'Name', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'title', text: 'Title', editable: true, inputType: 'text', pattern: '.{1,100}', errormsg: 'maximum 100 karakter legyen!' },
-    { key: 'year', text: 'Year', editable: true, inputType: 'number', pattern: '[0-9]{4}', errormsg: '4 darab számból álljon!' },
-    { key: 'type', text: 'Type', editable: true, inputType: 'text', pattern: '.{1,100}', errormsg: 'maximum 100 karakter legyen!' },
-    { key: 'catID', text: 'Category Id', editable: true, inputType: 'number', pattern: '[0-9]{1,32}', errormsg: 'maximum 32 darab számjegy legyen!' },
-    { key: 'description', text: 'Description', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'price', text: 'Price', editable: true, inputType: 'number', pattern: '[0-9]{1,32}', errormsg: 'maximum 32 darab számjegy legyen!' },
-    { key: 'featured', text: 'Featured', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: '' },
-    { key: 'active', text: 'Discount', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: '' }
-    ] :
-    [
-    { key: 'id', text: 'Id', editable: false, inputType: 'number', pattern: '[0-9]{1,100}', errormsg: 'számokból álljon (legfeljebb 100)!' },
-    { key: 'zip', text: 'Zip', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'country', text: 'Country', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'city', text: 'City', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'street', text: 'Street', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'notes', text: 'Notes', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' },
-    { key: 'active', text: 'Active', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!' }
+    { key: 'id', subkeys:'', text: 'Id', editable: false, inputType: 'number', pattern: '[0-9]{1,100}', errormsg: 'számokból álljon (legfeljebb 100)!', isRequired: true },
+    { key: 'zip', subkeys:'', text: 'Zip', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
+    { key: 'country', subkeys:'', text: 'Country', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
+    { key: 'city', subkeys:'', text: 'City', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
+    { key: 'street', subkeys:'', text: 'Street', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
+    { key: 'notes', subkeys:'', text: 'Notes', editable: true, inputType: 'text', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: false },
+    { key: 'active', subkeys:'', text: 'Active', editable: true, inputType: 'checkbox', pattern: '.{2,100}', errormsg: 'minimum 2 maximum 100 karakter legyen!', isRequired: true },
     ];
   }
 
@@ -117,13 +117,16 @@ export class EditorComponent implements OnInit {
   // }
   // module:any = this.importFile(`../model/${this.page}`);
 
-  editedItemType:any = {};
+  editedItem:any = {};
   updating: boolean = false;
   private service:any = false;
 
   constructor(
-    private productService: ProductService,
+    private billService: BillService,
     private categoryService: CategoryService,
+    private customerService: CustomerService,
+    private orderService: OrderService,
+    private productService: ProductService,
     private testService: TestService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -136,7 +139,7 @@ export class EditorComponent implements OnInit {
         this.service.get(params.idOrName).subscribe(
           testitem => {
             console.log(testitem);
-            this.editedItemType = testitem;// || this.model;
+            this.editedItem = testitem;
           }
         )
       });
@@ -145,35 +148,50 @@ export class EditorComponent implements OnInit {
   onFormSubmit(form: NgForm): void {
     this.updating = true;
 
-    if (this.editedItemType.id === null || this.editedItemType.id === 0) {
-      this.service.create(this.editedItemType);
+    if (this.editedItem.id === null || this.editedItem.id === 0) {
+      this.service.create(this.editedItem);
       console.log('router should navigate to '+ this.page);
       this.router.navigate([this.page]);
     } else {
-      this.service.update(this.editedItemType).subscribe(
+      this.service.update(this.editedItem).subscribe(
         () => this.router.navigate([this.page])
       );
     }
   }
 
   delete(): void {
-    this.service.remove(this.editedItemType);
+    this.service.remove(this.editedItem);
     this.router.navigate([this.page]);
   }
   
   selectService(page: string): void {
     this.page = page;
-    console.log(page + 'in selectService');
+    console.log(page + ' in selectService');
     switch (page) {
-      case 'product':
-        this.service = this.productService;
+      case 'bill':
+        this.service = this.billService;
         this.page = page;
-        this.model = new Product();
+        this.model = new Bill();
         break;
       case 'category':
         this.service = this.categoryService;
         this.page = page;
         this.model = new Category();
+        break;
+       case 'customer':
+        this.service = this.customerService;
+        this.page = page;
+        this.model = new Customer({});
+        break;
+      case 'order':
+        this.service = this.orderService;
+        this.page = page;
+        this.model = {};
+        break;
+      case 'product':
+        this.service = this.productService;
+        this.page = page;
+        this.model = new Product();
         break;
       case 'test':
         this.service = this.testService;
