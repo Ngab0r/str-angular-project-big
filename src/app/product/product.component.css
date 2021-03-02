@@ -2,18 +2,6 @@
   width: 75%;
 }
 
-th {
-  cursor: pointer;
-}
-
-th:hover {
-  color: #300035;
-}
-
-th {
-  transition: linear 200ms;
-}
-
 .form-control {
   transition: linear 200ms;
 }
@@ -72,4 +60,11 @@ i {
 .mat-header-cell {
   cursor: pointer;
   border: dotted 3px transparent;
+}
+
+.text-primary.header-cell:hover {
+  color: #300035 !important;
+}
+.mat-header-cell {
+  transition: color linear 200ms;
 }

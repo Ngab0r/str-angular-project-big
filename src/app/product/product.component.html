@@ -16,7 +16,8 @@
             [dataSource]="dataSource">
 
             <ng-container *ngFor=" let column of columns; let i=index" [matColumnDef]="column.name">
-              <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" (click)="selectColumnForSort(column.name)">
+              <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" class="text-primary header-cell"
+                (click)="selectColumnForSort(column.name)">
                 {{ column.title }}
                 <i *ngIf="sorter.sortAscend && sorter.sortKey==column.name" class="fa fa-angle-down fa-2x"></i>
                 <i *ngIf="!sorter.sortAscend && sorter.sortKey==column.name" class="fa fa-angle-up fa-2x"></i>
@@ -26,27 +27,26 @@
             </ng-container>
 
             <ng-container matColumnDef="image">
-              <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Image </mat-header-cell>
               <mat-cell *matCellDef="let row">
                 <img [src]="row.image" class="thumbnail" alt="row.name">
               </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="edit">
-              <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Edit </mat-header-cell>
               <mat-cell *matCellDef="let row">
                 <button [routerLink]="'/editor/product/' + [row.id]" class="btn btn-primary"><i
                     class="fa fa-edit"></i></button>
               </mat-cell>
             </ng-container>
             <ng-container matColumnDef="delete">
-              <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Delete </mat-header-cell>
               <mat-cell *matCellDef="let row">
                 <button type="button" class="btn btn-primary" data-toggle="modal" (click)="subscribeForDelete(row)"
                   data-target="#exampleModal">
                   <i class="fa fa-trash"></i>
                 </button>
-                <!-- <button (click)="delete(row)" class="btn btn-primary"><i class="fa fa-trash"></i></button> -->
               </mat-cell>
             </ng-container>
 
@@ -68,13 +68,13 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Delete message</h5>
+          <h5 class="modal-title" id="exampleModalLabel"><b>Delete message</b></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          Are you sure to delete {{ subscribeForDeleteItem.name }}?
+          Are you sure to delete <b>{{ subscribeForDeleteItem.name }}</b>?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -83,101 +83,3 @@
       </div>
     </div>
   </div>
-
-
-  <!-- <div class="main-content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header card-header-primary">
-            <h4 class="card-title ">Simple Table</h4>
-            <p class="card-category"> Here is a subtitle for this table</p>
-          </div>
-          <div class="card-body">
-            <app-searchbar [(filter)]="filter" [usedFilterType]="'admin'"></app-searchbar>
-            <div class="table-responsive">
-              <table class="table">
-                <thead class=" text-primary">
-                  <th>image</th>
-                  <th (click)="selectColumnForSort('id')">id
-                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='id'" class="fa fa-angle-down"></i>
-                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='id'" class="fa fa-angle-up"></i>
-                  </th>
-                  <th (click)="selectColumnForSort('name')">name
-                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='name'" class="fa fa-angle-down"></i>
-                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='name'" class="fa fa-angle-up"></i>
-                  </th>
-                  <th (click)="selectColumnForSort('title')">title
-                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='title'" class="fa fa-angle-down"></i>
-                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='title'" class="fa fa-angle-up"></i>
-                  </th>
-                  <th (click)="selectColumnForSort('year')">year
-                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='year'" class="fa fa-angle-down"></i>
-                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='year'" class="fa fa-angle-up"></i>
-                  </th>
-                  <th (click)="selectColumnForSort('type')">type
-                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='type'" class="fa fa-angle-down"></i>
-                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='type'" class="fa fa-angle-up"></i>
-                  </th>
-                  <th (click)="selectColumnForSort('catID')">catID
-                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='catID'" class="fa fa-angle-down"></i>
-                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='catID'" class="fa fa-angle-up"></i>
-                  </th>
-                  <th (click)="selectColumnForSort('description')">description
-                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='description'" class="fa fa-angle-down"></i>
-                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='description'" class="fa fa-angle-up"></i>
-                  </th>
-                  <th (click)="selectColumnForSort('pipe')">price
-                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='price'" class="fa fa-angle-down"></i>
-                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='price'" class="fa fa-angle-up"></i>
-                  </th>
-                  <th (click)="selectColumnForSort('featured')">featured
-                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='featured'" class="fa fa-angle-down"></i>
-                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='featured'" class="fa fa-angle-up"></i>
-                  </th>
-                  <th (click)="selectColumnForSort('active')">active
-                    <i *ngIf="sorter.sortAscend && sorter.sortKey==='active'" class="fa fa-angle-down"></i>
-                    <i *ngIf="!sorter.sortAscend && sorter.sortKey==='active'" class="fa fa-angle-up"></i>
-                  </th>
-                  <th>
-                    Edit
-                  </th>
-                </thead>
-                <tbody>
-                  <!-- 2. - BehaviorSubject vagy a product.service.ts fileban levo adatok megjelenitesehez -->
-  <!-- addressList$ a product.component.ts-ben van -->
-
-  <!-- <tr
-                    *ngFor="let product of productList$ | async | filter:filter.phrase:filter.selectedKeyForSearch:filter.phrase2 | sorter:sorter.sortKey:sorter.sortAscend"> -->
-
-  <!-- 2. - Observable 
-            <tr *ngFor="let product of productList | async  ">
-          -->
-  <!-- <td><img [src]="product.image" class="thumbnail" alt="product.name"></td>
-                    <td>{{ product.id }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.title }}</td>
-                    <td>{{ product.year }}</td>
-                    <td>{{ product.type }}</td>
-                    <td>{{ product.catID }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.featured }}</td>
-                    <td>{{ product.active }}</td>
-                    <td>
-                      <div class="btn-group">
-                        <button [routerLink]="'/editor/product/' + [product.id]" class="btn btn-primary"><i
-                            class="fa fa-edit"></i></button>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
