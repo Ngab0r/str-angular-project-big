@@ -8,6 +8,7 @@ import { Sorter } from 'app/model/sorter';
 import { FilterPipe } from 'app/pipe/filter.pipe';
 import { SorterPipe } from 'app/pipe/sorter.pipe';
 import { CustomerService } from 'app/service/customer.service';
+import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
 import { ICustomer } from '../model/customer';
 
@@ -73,6 +74,7 @@ export class CustomerComponent implements OnInit {
 
   constructor(
     private customerService: CustomerService,
+    private toastr: ToastrService,
   ) {
   }
 
@@ -92,6 +94,8 @@ export class CustomerComponent implements OnInit {
 
   delete(): void {
     this.customerService.remove(this.subscribeForDeleteItem);
+    this.toastr.success('Succesfully deleted!', 'Editor message:');
+
   }
 
   changeFilter(filter: Filter): void {
