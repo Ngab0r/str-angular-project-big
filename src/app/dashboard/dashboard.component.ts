@@ -51,7 +51,8 @@ export class DashboardComponent implements OnInit {
   testList4$: BehaviorSubject<Order[]> = this.orderService.list$;
   filterValues = ["new"];
   pendingOrders: Observable<Order[]> = this.testList4$.pipe(
-    map(order => order.filter(item => item.status = "new")));
+    map(order => order.filter(item => this.filterValues.indexOf(item.status) > -1))
+  );
 
   newOrders: number = 1;
 
