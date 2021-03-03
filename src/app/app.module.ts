@@ -37,6 +37,7 @@ import { TestEditorComponent } from './editor/test-editor/test-editor.component'
 import { ProductEditorComponent } from './editor/product-editor/product-editor.component';
 import { Test2EditorComponent } from './editor/test2-editor/test2-editor.component';
 import { EditorComponent } from './editor/editor.component';
+import { ToastrModule } from 'ngx-toastr';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -63,6 +64,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    ToastrModule.forRoot(), // ToastrModule added
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
@@ -76,9 +78,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatBadgeModule,
     MatBottomSheetModule,
     MatButtonModule,
-//     AgmCoreModule.forRoot({
-//       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-//     })
+    //     AgmCoreModule.forRoot({
+    //       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+    //     })
   ],
   declarations: [
     AppComponent,

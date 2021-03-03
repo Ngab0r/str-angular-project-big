@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-6 offset-3 mt-5">
-    <form #productFrom="ngForm" (ngSubmit)="onFormSubmit(productFrom)" ngNativeValidate>
+    <form #productFrom="ngForm" (ngSubmit)="onFormSubmit(productFrom)" ngNativeValidate novalidate>
       <div class="form-group" *ngFor="let attributes of htmlInputAttributes">
-<!--
+        <!--
       <div *ngIf="attributes.subkeys === ''">
 -->
         <label [for]="attributes.text">{{ attributes.text }}</label>
-<!--
+        <!--
         <div>
           <input [(ngModel)]="editedItem[attributes.key]" [name]="attributes.text" [type]="attributes.inputType" class="form-control" [pattern]="attributes.pattern">
           <div [hidden]="productFrom.controls[attributes.text]?.valid || attributes.inputType === 'checkbox' " class="text-danger">
@@ -20,13 +20,15 @@
           </select>
         </div>
         <div *ngIf="attributes.inputType === 'text'">
-          <input [(ngModel)]="attributes.key" [name]="attributes.text" type="text" class="form-control" [pattern]="attributes.pattern">
+          <input [(ngModel)]="attributes.key" [name]="attributes.text" type="text" class="form-control"
+            [pattern]="attributes.pattern">
           <div [hidden]="productFrom.controls[attributes.text]?.valid" class="text-danger">
             A(z) {{attributes.text}} {{ attributes.errormsg }}
           </div>
         </div>
         <div *ngIf="attributes.inputType === 'number'">
-          <input [(ngModel)]="attributes.key" [name]="attributes.text" type="number" class="form-control" [pattern]="attributes.pattern">
+          <input [(ngModel)]="attributes.key" [name]="attributes.text" type="number" class="form-control"
+            [pattern]="attributes.pattern">
           <div [hidden]="productFrom.controls[attributes.text]?.valid" class="text-danger">
             A(z) {{attributes.text}} {{ attributes.errormsg }}
           </div>
@@ -34,7 +36,7 @@
         <div *ngIf="attributes.inputType === 'checkbox'">
           <input [(ngModel)]="attributes.key" [name]="attributes.text" type="checkbox" class="form-control">
         </div>
-<!--
+        <!--
       </div>
       <div *ngIf="attributes.subkeys !== ''">
         <label [for]="attributes.text">{{ attributes.text }}</label>
@@ -61,7 +63,7 @@
       </div>
 -->
       </div>
-      <button [disabled]="productFrom.invalid || updating" class="btn btn-block btn-primary">
+      <button [disabled]="updating" class="btn btn-block btn-primary">
         <i *ngIf="!updating" class="fa fa-save"></i>
         <i *ngIf="updating" class="fa fa-refresh"></i>
       </button>
