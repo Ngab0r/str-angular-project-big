@@ -1,5 +1,5 @@
-.sidebar .nav li.active [class="nav-item active"] > a {
-  background-color: purple !important;
+.menuItem.nav-item.active > a {
+  background-color: #9c27b0 !important;
 }
 
 /*  
