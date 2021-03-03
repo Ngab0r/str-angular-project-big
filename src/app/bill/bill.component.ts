@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { FilterPipe } from '../pipe/filter.pipe';
 import { SorterPipe } from 'app/pipe/sorter.pipe';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-bill',
@@ -19,7 +20,7 @@ export class BillComponent implements OnInit {
 
   // 1.) - Behaviorsubject
   billList$: BehaviorSubject<Bill[]> = this.billService.list$;
-  
+
   filter: Filter = new Filter();
   sorter: Sorter = new Sorter();
   dataSource: any;
@@ -50,16 +51,19 @@ export class BillComponent implements OnInit {
   filterPipe: FilterPipe = new FilterPipe();
   sorterPipe: SorterPipe = new SorterPipe();
   subscribeForDeleteItem: Bill = new Bill();
-  billList;
+  billList: Bill[];
 
   constructor(
     private billService: BillService,
+    private toastr: ToastrService,
   ) {
     // 2.) - Observable  
     //  this.addressX = this.productService.getAll();
   }
 
   ngOnInit(): void {
+    this.filter.selectedKeyForSearch = 'amount';
+    this.sorter.sortKey = 'id';
     this.billService.getAll();
     this.billList$.subscribe(list => {
       this.billList = list;
@@ -73,6 +77,7 @@ export class BillComponent implements OnInit {
 
   delete(): void {
     this.billService.remove(this.subscribeForDeleteItem);
+    this.toastr.success('Succesfully deleted!', 'Editor message:');
   }
 
   changeFilter(filter: Filter): void {

@@ -10,6 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { FilterPipe } from '../pipe/filter.pipe';
 import { SorterPipe } from 'app/pipe/sorter.pipe';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -41,13 +42,17 @@ export class CategoryComponent implements OnInit {
   filterPipe: FilterPipe = new FilterPipe();
   sorterPipe: SorterPipe = new SorterPipe();
   subscribeForDeleteItem: Category = new Category();
-  categoryList;
+  categoryList: Category[];
 
   constructor(
     private categoryService: CategoryService,
-    ) {}
+    private toastr: ToastrService,
 
-   ngOnInit(): void {
+  ) { }
+
+  ngOnInit(): void {
+    this.filter.selectedKeyForSearch = 'name';
+    this.sorter.sortKey = 'id';
     this.categoryService.getAll();
     this.categoryList$.subscribe(list => {
       this.categoryList = list;
@@ -61,6 +66,8 @@ export class CategoryComponent implements OnInit {
 
   delete(): void {
     this.categoryService.remove(this.subscribeForDeleteItem);
+    this.toastr.success('Succesfully deleted!', 'Editor message:');
+
   }
 
   changeFilter(filter: Filter): void {

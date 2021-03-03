@@ -16,14 +16,17 @@
                 </div>
             </div>
         </div>
-        <div class="mb-2 mt-1 col-12 col-md-6 col-lg-4 {{filter.selectedKeyForSearch==='price'?'hide':''}}">
+        <div
+            class="mb-2 mt-1 col-12 col-md-6 col-lg-4 {{filter.selectedKeyForSearch==='price'||filter.selectedKeyForSearch==='amount'?'hide':''}}">
             <input class="form-control mr-sm-2" #filterName type="text" placeholder="Search"
                 (keyup)="onChangePhrase($event)">
         </div>
-        <div class="mb-2 mt-1 col-6 col-md-3 col-lg-2 {{filter.selectedKeyForSearch==='price'?'':'hide'}}">
+        <div
+            class="mb-2 mt-1 col-6 col-md-3 col-lg-2 {{filter.selectedKeyForSearch==='price'||filter.selectedKeyForSearch==='amount'?'':'hide'}}">
             <input class="form-control mr-sm-2" #from type="text" placeholder="From" (keyup)="onChangePhrase($event)">
         </div>
-        <div class="mb-2 mt-1 col-6 col-md-3 col-lg-2 {{filter.selectedKeyForSearch==='price'?'':'hide'}}">
+        <div
+            class="mb-2 mt-1 col-6 col-md-3 col-lg-2 {{filter.selectedKeyForSearch==='price'||filter.selectedKeyForSearch==='amount'?'':'hide'}}">
             <input class="form-control mr-sm-2" #to type="text" placeholder="To" (keyup)="onChangePhrase2($event)">
         </div>
 

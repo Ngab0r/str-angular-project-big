@@ -81,6 +81,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.filter.selectedKeyForSearch = 'name';
+    this.sorter.sortKey = 'name';
     this.productService.getAll();
     this.productList$.subscribe(list => {
       this.productList = list;

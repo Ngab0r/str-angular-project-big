@@ -1,4 +1,4 @@
 export class Sorter {
-    sortKey: string = 'name';
+    sortKey: string = '';
     sortAscend: boolean = true;
 }

@@ -80,6 +80,7 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.filter.selectedKeyForSearch = 'firstName';
+    this.sorter.sortKey = 'lastName';
     this.customerService.getAll();
     this.customerList$.subscribe(list => {
       this.customerList = list;

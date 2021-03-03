@@ -1,87 +1,88 @@
-
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Categories</h4>
-                    <p class="card-category"> Here you can find the categories.</p>
-                </div>
-                <div class="card-body">
-                    <app-searchbar [(filter)]="filter" (changeFilter)="changeFilter($event)" [usedFilterType]="'admin'">
-                    </app-searchbar>
-            
-                    <button [routerLink]="'/editor/category/0'" class="btn btn-primary"><i class="fa fa-plus"></i></button>
-            
-                    <mat-table cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="tableDrop($event)"
-                      [dataSource]="dataSource">
-            
-                        <ng-container *ngFor=" let column of columns; let i=index" [matColumnDef]="column.name">
-                          <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" class="text-primary header-cell"
-                            (click)="selectColumnForSort(column.name)">
-                            {{ column.title }}
-                            <i *ngIf="sorter.sortAscend && sorter.sortKey==column.name" class="fa fa-angle-down fa-2x"></i>
-                            <i *ngIf="!sorter.sortAscend && sorter.sortKey==column.name" class="fa fa-angle-up fa-2x"></i>
-                          </mat-header-cell>
-                          <mat-cell *matCellDef="let element">{{ element[column.name] }}
-                          </mat-cell>
-                        </ng-container>
-            
-                        <!-- <ng-container matColumnDef="image">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">Categories</h4>
+          <p class="card-category"> Here you can find the categories.</p>
+        </div>
+        <div class="card-body">
+          <app-searchbar [(filter)]="filter" (changeFilter)="changeFilter($event)" [usedFilterType]="'category'"
+            [columns]="columns">
+          </app-searchbar>
+
+          <button [routerLink]="'/editor/category/0'" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+
+          <mat-table cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="tableDrop($event)"
+            [dataSource]="dataSource">
+
+            <ng-container *ngFor=" let column of columns; let i=index" [matColumnDef]="column.name">
+              <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" class="text-primary header-cell"
+                (click)="selectColumnForSort(column.name)">
+                {{ column.title }}
+                <i *ngIf="sorter.sortAscend && sorter.sortKey==column.name" class="fa fa-angle-down fa-2x"></i>
+                <i *ngIf="!sorter.sortAscend && sorter.sortKey==column.name" class="fa fa-angle-up fa-2x"></i>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">{{ element[column.name] }}
+              </mat-cell>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="image">
                           <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Image </mat-header-cell>
                           <mat-cell *matCellDef="let row">
                             <img [src]="row.image" class="thumbnail" alt="row.name">
                           </mat-cell>
                         </ng-container> -->
-            
-                        <ng-container matColumnDef="edit">
-                          <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Edit </mat-header-cell>
-                          <mat-cell *matCellDef="let row">
-                            <button [routerLink]="'/editor/category/' + [row.id]" class="btn btn-primary"><i
-                                class="fa fa-edit"></i></button>
-                          </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="delete">
-                          <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Delete </mat-header-cell>
-                          <mat-cell *matCellDef="let row">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" (click)="subscribeForDelete(row)"
-                              data-target="#exampleModal">
-                              <i class="fa fa-trash"></i>
-                            </button>
-                          </mat-cell>
-                        </ng-container>
-            
-                        <mat-header-row *matHeaderRowDef="displayedColumns" class="tableHeaderRow" #tableHeaderRow>
-                        </mat-header-row>
-                        <mat-row *matRowDef="let row; columns: displayedColumns;">
-                        </mat-row>
-            
-                    </mat-table>
-                </div>
-            </div>
+
+            <ng-container matColumnDef="edit">
+              <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Edit </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <button [routerLink]="'/editor/category/' + [row.id]" class="btn btn-primary"><i
+                    class="fa fa-edit"></i></button>
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="delete">
+              <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Delete </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <button type="button" class="btn btn-primary" data-toggle="modal" (click)="subscribeForDelete(row)"
+                  data-target="#exampleModal">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns" class="tableHeaderRow" #tableHeaderRow>
+            </mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+
+          </mat-table>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-              
-              
-              
+
+
+
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
- <div class="modal-dialog" role="document">
-   <div class="modal-content">
-     <div class="modal-header">
-       <h5 class="modal-title" id="exampleModalLabel"><b>Delete message</b></h5>
-       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-         <span aria-hidden="true">&times;</span>
-       </button>
-     </div>
-     <div class="modal-body">
-       Are you sure you want to delete the category <b>{{ subscribeForDeleteItem.name }}</b>?
-     </div>
-     <div class="modal-footer">
-       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-       <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="delete()">DELETE</button>
-     </div>
-   </div>
- </div>
-/div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><b>Delete message</b></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete the category <b>{{ subscribeForDeleteItem.name }}</b>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="delete()">DELETE</button>
+      </div>
+    </div>
+  </div>
+  /div>

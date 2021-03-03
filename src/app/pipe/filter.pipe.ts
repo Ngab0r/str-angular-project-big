@@ -11,7 +11,7 @@ export class FilterPipe implements PipeTransform {
       return value;
     }
 
-    if (key === 'price') {
+    if (key === 'price' || key === 'amount') {
       if (!isNaN(parseInt(phrase)) || !isNaN(parseInt(phrase2))) {
         if (!isNaN(parseInt(phrase)) && !isNaN(parseInt(phrase2))) {
           return value.filter(item => parseInt(phrase) <= parseInt(item[key]) && parseInt(phrase2) >= parseInt(item[key]));
