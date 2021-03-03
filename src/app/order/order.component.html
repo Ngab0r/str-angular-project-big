@@ -1,4 +1,104 @@
-<div class="main-content">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">Products</h4>
+          <p class="card-category"></p>
+        </div>
+        <div class="card-body">
+          <app-searchbar [(filter)]="filter" (changeFilter)="changeFilter($event)" [usedFilterType]="'order'"
+            [columns]="columns">
+          </app-searchbar>
+
+          <button [routerLink]="'/editor/order/0'" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+
+          <mat-table cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="tableDrop($event)"
+            [dataSource]="dataSource">
+
+            <ng-container *ngFor=" let column of columns; let i=index" [matColumnDef]="column.name">
+              <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" class="text-primary header-cell"
+                (click)="selectColumnForSort(column.name)">
+                {{ column.title }}
+                <i *ngIf="sorter.sortAscend && sorter.sortKey==column.name"
+                  class="fa fa-angle-down fa-2x sorterSign"></i>
+                <i *ngIf="!sorter.sortAscend && sorter.sortKey==column.name"
+                  class="fa fa-angle-up fa-2x sorterSign"></i>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element[column.name] }}
+                <div *ngIf="column.name==='productID'||column.name==='quantity'">
+                  <ng-container *ngFor="let role of element['items']">
+                    <span *ngIf="column.name==='productID'">{{role.productID}}</span>
+                    <span *ngIf="column.name==='quantity'">{{role.quantity}}</span>
+                    <br />
+                  </ng-container>
+                </div>
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="image">
+              <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Image </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <img [src]="row.image" class="thumbnail" alt="row.name">
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="edit">
+              <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Edit </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <button [routerLink]="'/editor/order/' + [row.id]" class="btn btn-primary"><i
+                    class="fa fa-edit"></i></button>
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="delete">
+              <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Delete </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <button type="button" class="btn btn-primary" data-toggle="modal" (click)="subscribeForDelete(row)"
+                  data-target="#exampleModal">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns" class="tableHeaderRow" #tableHeaderRow>
+            </mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+
+          </mat-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><b>Delete message</b></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete <b>{{ subscribeForDeleteItem.firstName }} {{
+          subscribeForDeleteItem.lastName }}</b>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="delete()">DELETE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="main-content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
@@ -21,16 +121,16 @@
                                         Edit
                                     </th>
                   </thead>
-                  <tbody>
-                    <!-- 2. - BehaviorSubject vagy a order.service.ts fileban levo adatok megjelenitesehez
+                  <tbody> -->
+<!-- 2. - BehaviorSubject vagy a order.service.ts fileban levo adatok megjelenitesehez
                 orderList$ a order.component.ts-ben van
             -->
-                    <tr *ngFor="let order of orderList$ | async  ">
-  
-                      <!-- 2. - Observable 
+<!-- <tr *ngFor="let order of orderList$ | async  "> -->
+
+<!-- 2. - Observable 
               <tr *ngFor="let order of orderList | async  ">
             -->
-                        <td>{{ order.id }}</td>
+<!-- <td>{{ order.id }}</td>
                         <td>{{ order.customerID }}</td>
                         <td><tr *ngFor="let i of order.items">
                             <td>{{ i.productID }}</td>
@@ -57,4 +157,4 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->

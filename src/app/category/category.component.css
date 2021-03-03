@@ -9,7 +9,7 @@
   border-color: #300035;
 }
 
-i {
+i.sorterSign {
   position: inline;
   right: 0;
   margin-left: 0.5rem;
