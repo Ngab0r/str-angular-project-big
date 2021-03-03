@@ -29,7 +29,12 @@ export class SorterPipe implements PipeTransform {
      * 3. Térj vissza a két string localeCompare metódus által visszaadott
      *  összehasonlításának az eredményével.
      */
-    return value.sort((a: any, b: any) => SorterPipe.compare(a[key], b[key], isAscending));
+
+    const arr = key.split('.')[0].split('[')[0];
+    const keyA = 'a' + "['" + arr + "']" + key.replace(arr, '');
+    const keyB = 'b' + "['" + arr + "']" + key.replace(arr, '');
+
+    return value.sort((a: any, b: any) => SorterPipe.compare(eval(keyA), eval(keyB), isAscending));
   }
   static compare(a: any, b: any, isAscending): number {
     if (typeof (a) === 'number' && typeof (b) === 'number') {

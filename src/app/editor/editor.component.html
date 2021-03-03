@@ -14,6 +14,19 @@
           </div>
         </div>
 -->
+        <!-- <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton"
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{ selectedColumn.title }}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a *ngFor="let key of columns" class="dropdown-item" [routerLink]="" (click)="selectKeyForSearch(key);filterName.value = '';from.value = '';to.value = ''
+          ">{{
+          key.title }}</a>
+  </div>
+</div>
+ -->
+
         <div *ngIf="attributes.inputType === 'select'">
           <select [(ngModel)]="attributes.key" [name]="attributes.text" [id]="attributes.text" class="form-control">
             <option *ngFor="let value of attributes.values" [value]="value"></option>

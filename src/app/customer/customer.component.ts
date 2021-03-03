@@ -69,7 +69,7 @@ export class CustomerComponent implements OnInit {
   filterPipe: FilterPipe = new FilterPipe();
   sorterPipe: SorterPipe = new SorterPipe();
   subscribeForDeleteItem: Customer = new Customer({});
-  productList;
+  customerList: Customer[];
 
   constructor(
     private customerService: CustomerService,
@@ -80,7 +80,7 @@ export class CustomerComponent implements OnInit {
     this.filter.selectedKeyForSearch = 'firstName';
     this.customerService.getAll();
     this.customerList$.subscribe(list => {
-      this.productList = list;
+      this.customerList = list;
       this.dataSource = new MatTableDataSource(list);
     });
   }
@@ -96,9 +96,10 @@ export class CustomerComponent implements OnInit {
 
   changeFilter(filter: Filter): void {
     this.filter = filter;
+    console.log(this.filter.selectedKeyForSearch);
     this.customerList$.subscribe(list => {
-      this.productList = this.filterPipe.transform(list, this.filter.phrase, this.filter.selectedKeyForSearch, this.filter.phrase2);
-      this.dataSource = new MatTableDataSource(this.productList);
+      this.customerList = this.filterPipe.transform(list, this.filter.phrase, this.filter.selectedKeyForSearch, this.filter.phrase2);
+      this.dataSource = new MatTableDataSource(this.customerList);
       this.sorting();
     });
   }
@@ -109,11 +110,11 @@ export class CustomerComponent implements OnInit {
     this.sorting();
   }
   sorting() {
-    this.dataSource = new MatTableDataSource(this.sorterPipe.transform(this.productList, this.sorter.sortKey, this.sorter.sortAscend));
+    this.dataSource = new MatTableDataSource(this.sorterPipe.transform(this.customerList, this.sorter.sortKey, this.sorter.sortAscend));
   }
 
   tableDrop(event: CdkDragDrop<string[]>) {
-    this.displayedColumns = this.moveItemInArray(this.displayedColumns, event.previousIndex + 1, event.currentIndex + 1);
+    this.displayedColumns = this.moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
 
   moveItemInArray(array: any[], prev: number, curr: number) {
@@ -126,6 +127,13 @@ export class CustomerComponent implements OnInit {
     array.splice(curr, 0, array.splice(prev, 1)[0]);
     return array
   }
+
+  returnVariablesFromColumnName(element: Customer, name: string): string {
+    const arr = name.split('.')[0].split('[')[0];
+    const key = 'element' + "['" + arr + "']" + name.replace(arr, '');
+    return (eval(key));
+  }
+
 
 
 }

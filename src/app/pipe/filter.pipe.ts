@@ -28,9 +28,11 @@ export class FilterPipe implements PipeTransform {
       }
     }
 
+    const arr = key.split('.')[0].split('[')[0];
+    const key2 = 'item' + "['" + arr + "']" + key.replace(arr, '');
 
     phrase = phrase.toLowerCase();
-    return value.filter(item => item[key].toString().toLowerCase().includes(phrase));
+    return value.filter(item => eval(key2).toString().toLowerCase().includes(phrase));
 
   }
 }

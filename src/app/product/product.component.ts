@@ -69,7 +69,7 @@ export class ProductComponent implements OnInit {
   filterPipe: FilterPipe = new FilterPipe();
   sorterPipe: SorterPipe = new SorterPipe();
   subscribeForDeleteItem: Product = new Product();
-  productList;
+  productList: Product[];
   constructor(
     private productService: ProductService,
   ) {
@@ -78,6 +78,7 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.filter.selectedKeyForSearch = 'name';
     this.productService.getAll();
     this.productList$.subscribe(list => {
       this.productList = list;
