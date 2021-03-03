@@ -35,4 +35,5 @@ export class Customer implements ICustomer {
         this.address = typeof customer.address === 'undefined' ? new Address() : customer.address;
         this.active = typeof customer.active === 'boolean' ? customer.active : false;
     }
+
 }

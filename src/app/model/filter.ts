@@ -1,6 +1,6 @@
 export class Filter {
 
     phrase: string = '';
-    selectedKeyForSearch: string = 'name';
+    selectedKeyForSearch: string = '';
     phrase2?: string;
 }

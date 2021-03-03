@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Columns } from 'app/model/columns';
+import { Customer } from 'app/model/customer';
 import { Filter } from 'app/model/filter';
 //import { Sorter } from 'src/app/model/sorter';
 import { ConfigService } from 'app/service/config.service';
@@ -14,6 +16,7 @@ export class SearchbarComponent implements OnInit {
   //@Input() sorter: Sorter;
   @Input() usedFilterType: string | undefined;
   @Output() changeFilter: EventEmitter<Filter> = new EventEmitter();
+  @Input() columns: Columns[];
 
   //@Input() usedSortType: string | undefined;
   // @Output() filterChange = new EventEmitter<Filter>();
@@ -21,7 +24,8 @@ export class SearchbarComponent implements OnInit {
 
   // phrase: string = '';
   // phrase2: string = '';
-  keys: string[] = this.config.tableCols.map(item => item.key);
+  // keys: string[] = [];
+  selectedColumn: Columns = new Columns();
   // selectedKeyForSearch: string = 'name';
   // sortKey: string = 'name';
   // sortAscend: boolean = true;
@@ -30,6 +34,8 @@ export class SearchbarComponent implements OnInit {
   constructor(private config: ConfigService,) { }
 
   ngOnInit(): void {
+    this.selectedColumn = this.columns.find(item => item.name === this.filter.selectedKeyForSearch);
+    console.log(this.columns);
     console.log(this.filter);
   }
 
@@ -48,8 +54,9 @@ export class SearchbarComponent implements OnInit {
   }
 
 
-  selectKeyForSearch(key: string): void {
-    this.filter.selectedKeyForSearch = key;
+  selectKeyForSearch(column: Columns): void {
+    this.filter.selectedKeyForSearch = column.name;
+    this.selectedColumn = column;
     if (this.filter.selectedKeyForSearch !== 'price') {
       this.filter.phrase = '';
       this.filter.phrase2 = '';

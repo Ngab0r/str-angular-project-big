@@ -7,13 +7,12 @@
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ filter.selectedKeyForSearch }}
+                    {{ selectedColumn.title }}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a *ngFor="let key of keys| productPropertyFilter:usedFilterType" class="dropdown-item" [routerLink]=""
-                        (click)="selectKeyForSearch(key);filterName.value = '';from.value = '';to.value = ''
+                    <a *ngFor="let key of columns" class="dropdown-item" [routerLink]="" (click)="selectKeyForSearch(key);filterName.value = '';from.value = '';to.value = ''
                         ">{{
-                        key }}</a>
+                        key.title }}</a>
                 </div>
             </div>
         </div>
@@ -28,7 +27,7 @@
             <input class="form-control mr-sm-2" #to type="text" placeholder="To" (keyup)="onChangePhrase2($event)">
         </div>
 
-<!--
+        <!--
         <div class="my-1 col-4 col-md-8 col-lg-1 d-flex align-items-center  justify-content-end">
             <span class="h6 mb-0">Order:</span>
         </div>
@@ -45,7 +44,7 @@
             </div>
         </div>
 -->
-<!--
+        <!--
         <div class="my-1 col-2 col-md-1 col-lg-1">
             <a [routerLink]="" (click)="changeSortAscend()"><i
                     class="fa fa-arrow-{{ sorter.sortAscend?'up':'down' }} fa-2x" aria-hidden="true"></i>
