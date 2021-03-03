@@ -14,6 +14,8 @@ import { CustomerService } from 'app/service/customer.service';
 import { Customer } from 'app/model/customer';
 import { OrderService } from 'app/service/order.service';
 import { Order } from 'app/model/order';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
@@ -143,6 +145,7 @@ export class EditorComponent implements OnInit {
     private testService: TestService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -164,6 +167,10 @@ export class EditorComponent implements OnInit {
   }
 
   onFormSubmit(form: NgForm): void {
+    if (!form.valid) {
+      this.toastr.error('Invalid form!', 'Editor message:');
+      return;
+    }
     this.updating = true;
     let attributes;
     for (attributes of this.htmlInputAttributes) {
@@ -174,9 +181,14 @@ export class EditorComponent implements OnInit {
       this.service.create(this.editedItem);
       console.log('router should navigate to ' + this.page);
       this.router.navigate([this.page]);
+      this.toastr.success('Succesfully created!', 'Editor message:');
+
     } else {
       this.service.update(this.editedItem).subscribe(
-        () => this.router.navigate([this.page])
+        () => {
+          this.router.navigate([this.page]);
+          this.toastr.success('Succesfully saved!', 'Editor message:');
+        }
       );
     }
   }
@@ -184,6 +196,8 @@ export class EditorComponent implements OnInit {
   delete(): void {
     this.service.remove(this.editedItem);
     this.router.navigate([this.page]);
+    this.toastr.success('Succesfully deleted!', 'Editor message:');
+
   }
 
   selectService(page: string): void {
