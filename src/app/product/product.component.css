@@ -68,3 +68,11 @@ i {
 .mat-header-cell {
   transition: color linear 200ms;
 }
+
+.mat-row:nth-child(even) {
+  background-color: white;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: #f8f8f8;
+}

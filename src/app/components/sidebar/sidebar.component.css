@@ -1,7 +1,8 @@
-/* li.nav-item active > a.nav-link {
+.sidebar .nav li.active [class="nav-item active"] > a {
   background-color: purple !important;
-} */
-/* 
+}
+
+/*  
 .sidebar[data-color="danger"] li.active > a {
   background-color: purple !important;
 } */
