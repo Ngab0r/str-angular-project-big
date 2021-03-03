@@ -18,9 +18,9 @@ import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
-import {
-  AgmCoreModule
-} from '@agm/core';
+
+//import {  AgmCoreModule} from '@agm/core';
+
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ProductComponent } from './product/product.component';
 import { TestComponent } from './test/test.component';
@@ -48,9 +48,9 @@ import { EditorComponent } from './editor/editor.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+//     AgmCoreModule.forRoot({
+//       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+//     })
   ],
   declarations: [
     AppComponent,
