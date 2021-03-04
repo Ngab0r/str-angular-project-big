@@ -3,69 +3,69 @@
     {
       "id": 1,
       "orderID": 1,
-      "amount": "10200",
+      "amount": 10200,
       "status": "new"
     },
     {
       "id": 2,
       "orderID": 2,
-      "amount": "3000",
+      "amount": 3000,
       "status": "new"
     },
     {
       "id": 3,
       "orderID": 3,
-      "amount": "6400",
+      "amount": 6400,
       "status": "new"
     },
     {
       "id": 4,
       "orderID": 4,
-      "amount": "3000",
+      "amount": 3000,
       "status": "paid"
     },
     {
       "id": 5,
       "orderID": 5,
-      "amount": "6200",
+      "amount": 6200,
       "status": "new"
     },
     {
       "id": 6,
       "orderID": 6,
-      "amount": "2000",
+      "amount": 2000,
       "status": "new"
     },
     {
       "id": 7,
       "orderID": 7,
-      "amount": "14010",
+      "amount": 14010,
       "status": "paid"
     }
   ],
   "category": [
     {
-      "id": "1",
+      "id": 1,
       "name": "klasszikus",
       "description": "komolyzene"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "nép",
       "description": "népzene"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "pop",
       "description": "popzene"
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "elektronikus",
       "description": "elektronikus zene"
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "rock",
       "description": "rockzene"
     }
@@ -158,103 +158,103 @@
   ],
   "order": [
     {
-      "id": "1",
-      "customerID": "1",
+      "id": 1,
+      "customerID": 1,
       "items": [
         {
-          "productID": "1",
-          "quantity": "1"
+          "productID": 1,
+          "quantity": 1
         },
         {
-          "productID": "2",
-          "quantity": "2"
+          "productID": 2,
+          "quantity": 2
         }
       ],
-      "amount": "10200",
+      "amount": 10200,
       "status": "new"
     },
     {
-      "id": "2",
-      "customerID": "2",
+      "id": 2,
+      "customerID": 2,
       "items": [
         {
-          "productID": "3",
-          "quantity": "1"
+          "productID": 3,
+          "quantity": 1
         }
       ],
-      "amount": "3000",
+      "amount": 3000,
       "status": "new"
     },
     {
-      "id": "3",
-      "customerID": "2",
+      "id": 3,
+      "customerID": 2,
       "items": [
         {
-          "productID": "4",
-          "quantity": "2"
+          "productID": 4,
+          "quantity": 2
         }
       ],
-      "amount": "6400",
+      "amount": 6400,
       "status": "new"
     },
     {
-      "id": "4",
-      "customerID": "2",
+      "id": 4,
+      "customerID": 2,
       "items": [
         {
-          "productID": "3",
-          "quantity": "1"
+          "productID": 3,
+          "quantity": 1
         }
       ],
-      "amount": "3000",
+      "amount": 3000,
       "status": "paid"
     },
     {
-      "id": "5",
-      "customerID": "3",
+      "id": 5,
+      "customerID": 3,
       "items": [
         {
-          "productID": "3",
-          "quantity": "1"
+          "productID": 3,
+          "quantity": 1
         },
         {
-          "productID": "4",
-          "quantity": "1"
+          "productID": 4,
+          "quantity": 1
         }
       ],
-      "amount": "6200",
+      "amount": 6200,
       "status": "new"
     },
     {
-      "id": "6",
-      "customerID": "4",
+      "id": 6,
+      "customerID": 4,
       "items": [
         {
-          "productID": "7",
-          "quantity": "1"
+          "productID": 7,
+          "quantity": 1
         }
       ],
-      "amount": "2000",
+      "amount": 2000,
       "status": "shipped"
     },
     {
-      "id": "7",
-      "customerID": "6",
+      "id": 7,
+      "customerID": 6,
       "items": [
         {
-          "productID": "4",
-          "quantity": "1"
+          "productID": 4,
+          "quantity": 1
         },
         {
-          "productID": "5",
-          "quantity": "2"
+          "productID": 5,
+          "quantity": 2
         },
         {
-          "productID": "6",
-          "quantity": "1"
+          "productID": 6,
+          "quantity": 1
         }
       ],
-      "amount": "14010",
+      "amount": 14010,
       "status": "paid"
     }
   ],
