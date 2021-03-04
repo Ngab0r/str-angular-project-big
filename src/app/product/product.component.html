@@ -34,6 +34,9 @@
               <mat-cell *matCellDef="let row">
                 <img [src]="row.image" class="thumbnail" alt="row.name">
               </mat-cell>
+              <mat-footer-cell *matFooterCellDef class="text-primary footer-cell">
+                {{ column.footer }}
+              </mat-footer-cell>
             </ng-container>
 
             <ng-container matColumnDef="edit">
@@ -42,6 +45,7 @@
                 <button [routerLink]="'/editor/product/' + [row.id]" class="btn btn-primary"><i
                     class="fa fa-edit"></i></button>
               </mat-cell>
+              <mat-footer-cell *matFooterCellDef class="text-primary footer-cell">Total:</mat-footer-cell>
             </ng-container>
             <ng-container matColumnDef="delete">
               <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Delete </mat-header-cell>
@@ -51,12 +55,15 @@
                   <i class="fa fa-trash"></i>
                 </button>
               </mat-cell>
+              <mat-footer-cell *matFooterCellDef class="text-primary footer-cell">Total:</mat-footer-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns" class="tableHeaderRow" #tableHeaderRow>
             </mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;">
             </mat-row>
+            <mat-footer-row *matFooterRowDef="displayedColumns" class="tableFooterRow" #tableFooterRow>
+            </mat-footer-row>
 
           </mat-table>
         </div>

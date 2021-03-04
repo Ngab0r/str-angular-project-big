@@ -32,39 +32,48 @@ export class CustomerComponent implements OnInit {
   columns: Columns[] = [
     {
       name: 'id',
-      title: 'No.'
+      title: 'No.',
+      footer: 0
     },
     {
       name: 'firstName',
-      title: 'First Name'
+      title: 'First Name',
+      footer: 0
     },
     {
       name: 'lastName',
-      title: 'Last Name'
+      title: 'Last Name',
+      footer: 0
     },
     {
       name: 'email',
-      title: 'Email'
+      title: 'Email',
+      footer: 0
     },
     {
       name: 'address.zip',
-      title: 'Address Zip'
+      title: 'Address Zip',
+      footer: 0
     },
     {
       name: 'address.country',
-      title: 'Address Country'
+      title: 'Address Country',
+      footer: 0
     },
     {
       name: 'address.city',
-      title: 'Address City'
+      title: 'Address City',
+      footer: 0
     },
     {
       name: 'address.street',
-      title: 'Address Street'
+      title: 'Address Street',
+      footer: 0
     },
     {
       name: 'active',
-      title: 'Active'
+      title: 'Active',
+      footer: 0
     },
   ];
   filterPipe: FilterPipe = new FilterPipe();

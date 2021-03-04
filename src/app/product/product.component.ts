@@ -32,39 +32,48 @@ export class ProductComponent implements OnInit {
   columns: any[] = [
     {
       name: 'id',
-      title: 'No.'
+      title: 'No.',
+      footer: 0
     },
     {
       name: 'name',
-      title: 'Name'
+      title: 'Name',
+      footer: 0
     },
     {
       name: 'title',
-      title: 'Title'
+      title: 'Title',
+      footer: 0
     },
     {
       name: 'year',
-      title: 'Year'
+      title: 'Year',
+      footer: 0
     },
     {
       name: 'type',
-      title: 'Type'
+      title: 'Type',
+      footer: 0
     },
     {
       name: 'catID',
-      title: 'Catedory Id'
+      title: 'Catedory Id',
+      footer: 0
     },
     {
       name: 'description',
-      title: 'Description'
+      title: 'Description',
+      footer: 0
     },
     {
       name: 'price',
-      title: 'Price'
+      title: 'Price',
+      footer: 0
     },
     {
       name: 'active',
-      title: 'Active'
+      title: 'Active',
+      footer: 0
     },
   ];
   filterPipe: FilterPipe = new FilterPipe();

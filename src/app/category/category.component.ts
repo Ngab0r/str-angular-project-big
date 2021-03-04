@@ -28,15 +28,18 @@ export class CategoryComponent implements OnInit {
   columns: any[] = [
     {
       name: 'id',
-      title: 'No.'
+      title: 'No.',
+      footer: 0
     },
     {
       name: 'name',
-      title: 'Name'
+      title: 'Name',
+      footer: 0
     },
     {
       name: 'description',
-      title: 'Description'
+      title: 'Description',
+      footer: 0
     },
   ];
   filterPipe: FilterPipe = new FilterPipe();
