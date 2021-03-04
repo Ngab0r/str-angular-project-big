@@ -11,6 +11,20 @@
   background-color: #e8433f !important;
   border-color: #e8433f !important;
 }
+.btn-outline-primary {
+  color: #e8433f;
+  border-color: rgba(232, 67, 63, 0.8);
+}
+.btn-outline-primary:hover {
+  background-color: #e50c09;
+  border-color: #e50c09;
+  color: white;
+}
+
+.btn-outline-primary:focus {
+  color: #e8433f !important;
+  border-color: #e8433f !important;
+}
 
 .text-primary {
   color: #e8433f !important;

@@ -2,6 +2,21 @@
   box-shadow: none !important;
 }
 
+.btn-outline-primary:focus {
+  color: #9c27b0 !important;
+  border-color: #9c27b0 !important;
+}
+
+.btn-outline-primary {
+  color: #9c27b0;
+  border-color: rgba(156, 39, 176, 0.8);
+}
+.btn-outline-primary:hover {
+  background-color: #9124a3;
+  border-color: #9124a3;
+  color: white;
+}
+
 .thumbnail {
   width: 75%;
 }
