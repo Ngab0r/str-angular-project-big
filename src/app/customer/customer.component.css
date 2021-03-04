@@ -1,3 +1,7 @@
+:host ::ng-deep .form-control:focus {
+  box-shadow: none !important;
+}
+
 .thumbnail {
   width: 75%;
 }
@@ -46,8 +50,8 @@ i.sorterSign {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 5px;
-  right: 5px;
+  left: 0px;
+  right: 0px;
   border-radius: 4px;
   background: rgba(0, 0, 0, 0.1);
   border: dashed 1px rgba(0, 0, 0, 0.4);
@@ -59,13 +63,14 @@ i.sorterSign {
 
 .cdk-drag {
   cursor: pointer;
-  border: dotted 3px transparent;
+  border: dotted 0px transparent;
 }
 
-.text-primary.header-cell:hover {
+.cdk-drag.text-primary.header-cell:hover {
   color: #300035 !important;
 }
 .mat-header-cell {
+  font-size: 1rem;
   transition: color linear 200ms;
 }
 

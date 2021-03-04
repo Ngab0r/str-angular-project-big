@@ -54,15 +54,20 @@ export class DashboardComponent implements OnInit {
     map(order => order.filter(item => this.filterValues.indexOf(item.status) > -1))
   );
 
-  newOrders: number = 1;
-
-
   // pending bills dashboard widget data
   testList5$: BehaviorSubject<Bill[]> = this.billService.list$;
   filterValues2 = ["new"];
   pendingBills: Observable<Bill[]> = this.testList5$.pipe(
     map(bill => bill.filter(item => this.filterValues2.indexOf(item.status) > -1))
   );
+
+
+  // dashboard chart
+  activeProductsChart: number = 0;
+  activeCustomersChart: number = 0;
+  pendingOrdersChart: number = 0;
+  pendingBillsChart: number = 0;
+  allOrderChart: Order[] = [];
 
 
   constructor(
@@ -139,8 +144,27 @@ export class DashboardComponent implements OnInit {
     this.customerService.getAll();
     this.orderService.getAll();
     this.billService.getAll();
+
+    //chart
+    this.activeProds.subscribe(item => {
+      this.activeProductsChart = item.length;
+      this.crateCharts();
+    });
+    this.activeCustomers.subscribe(item => {
+      this.activeCustomersChart = item.length;
+      this.crateCharts();
+    });
     this.pendingOrders.subscribe(item => {
-      this.newOrders = item.length;
+      this.pendingOrdersChart = item.length;
+      this.crateCharts();
+    });
+    this.pendingBills.subscribe(item => {
+      this.pendingBillsChart = item.length;
+      this.crateCharts();
+    });
+
+    this.orderService.list$.subscribe(item => {
+      this.allOrderChart = item;
       this.crateCharts();
     });
 
@@ -155,7 +179,7 @@ export class DashboardComponent implements OnInit {
     const dataDailySalesChart: any = {
       labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
       series: [
-        [this.newOrders, 17, 7, 17, 23, 18, 38]
+        [2, 17, 7, 17, 23, 18, 38]
       ]
     };
 
@@ -176,10 +200,9 @@ export class DashboardComponent implements OnInit {
     /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
     const dataCompletedTasksChart: any = {
-      labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
-      series: [
-        [230, 750, 450, 300, 280, 240, 200, 190]
-      ]
+      labels: this.allOrderChart.map(itemMap => itemMap.id),
+      series: [this.allOrderChart.map(itemMap => itemMap.amount)]
+
     };
 
     const optionsCompletedTasksChart: any = {
@@ -187,8 +210,9 @@ export class DashboardComponent implements OnInit {
         tension: 0
       }),
       low: 0,
-      high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-      chartPadding: { top: 0, right: 0, bottom: 0, left: 0 }
+      high: Math.ceil(Math.max(...this.allOrderChart.map(itemMap => itemMap.amount)) / 1000) * 1000,
+      // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+      chartPadding: { top: 0, right: 0, bottom: 0, left: 10 }
     }
 
     var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
@@ -201,9 +225,9 @@ export class DashboardComponent implements OnInit {
     /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
     var datawebsiteViewsChart = {
-      labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+      labels: ['Active Products', 'Active Customers', 'Pending Orders', 'Pending Bills'],
       series: [
-        [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
+        [this.activeProductsChart, this.activeCustomersChart, this.pendingOrdersChart, this.pendingBillsChart]
 
       ]
     };
@@ -212,7 +236,7 @@ export class DashboardComponent implements OnInit {
         showGrid: false
       },
       low: 0,
-      high: 1000,
+      high: Math.ceil(Math.max(...[this.activeProductsChart, this.activeCustomersChart, this.pendingOrdersChart, this.pendingBillsChart]) / 10) * 10,
       chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
     };
     var responsiveOptions: any[] = [

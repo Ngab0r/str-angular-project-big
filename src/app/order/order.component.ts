@@ -43,7 +43,7 @@ export class OrderComponent implements OnInit {
     },
     {
       name: 'quantity',
-      title: 'quantity'
+      title: 'Quantity'
     },
     {
       name: 'amount',
@@ -51,7 +51,7 @@ export class OrderComponent implements OnInit {
     },
     {
       name: 'status',
-      title: 'status'
+      title: 'Status'
     },
   ];
   filterPipe: FilterPipe = new FilterPipe();

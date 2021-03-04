@@ -1,3 +1,29 @@
+.btn-primary {
+  background-color: #e91e62;
+  border-color: #e91e62;
+}
+.btn-primary:hover {
+  background-color: #bc184f;
+  border-color: #bc184f;
+}
+.text-primary {
+  color: #e91e62 !important;
+}
+
+.card .card-header-primary:not(.card-header-icon):not(.card-header-text) {
+  background: linear-gradient(60deg, #e91e62, #ce1a56);
+}
+
+:host ::ng-deep .form-control:focus {
+  box-shadow: none !important;
+  background-image: linear-gradient(
+      to top,
+      #e91e62 2px,
+      rgba(156, 39, 176, 0) 2px
+    ),
+    linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px) !important;
+}
+
 .thumbnail {
   width: 75%;
 }
@@ -6,7 +32,7 @@
   transition: linear 200ms;
 }
 .form-control:hover {
-  border-color: #300035;
+  border-color: #a31544;
 }
 
 i.sorterSign {
@@ -46,8 +72,8 @@ i.sorterSign {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 5px;
-  right: 5px;
+  left: 0px;
+  right: 0px;
   border-radius: 4px;
   background: rgba(0, 0, 0, 0.1);
   border: dashed 1px rgba(0, 0, 0, 0.4);
@@ -59,13 +85,14 @@ i.sorterSign {
 
 .cdk-drag {
   cursor: pointer;
-  border: dotted 3px transparent;
+  border: dotted 0px transparent;
 }
 
-.text-primary.header-cell:hover {
-  color: #300035 !important;
+.cdk-drag.text-primary.header-cell:hover {
+  color: #a31544 !important;
 }
 .mat-header-cell {
+  font-size: 1rem;
   transition: color linear 200ms;
 }
 

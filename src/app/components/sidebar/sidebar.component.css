@@ -6,3 +6,60 @@
 .sidebar[data-color="danger"] li.active > a {
   background-color: purple !important;
 } */
+
+.orange.menuItem.nav-item.active > a {
+  background-color: #fc9713 !important;
+}
+.green.menuItem.nav-item.active > a {
+  background-color: #51ab55 !important;
+}
+.red.menuItem.nav-item.active > a {
+  background-color: #f44335 !important;
+}
+.blue.menuItem.nav-item.active > a {
+  background-color: #01bcd4 !important;
+}
+.puple.menuItem.nav-item.active > a {
+  background-color: #9c27b0 !important;
+}
+.rose.menuItem.nav-item.active > a {
+  background-color: #e91e62 !important;
+}
+
+.orange.menuItem.nav-item.active:hover > a {
+  background-color: #fc9713 !important;
+}
+.green.menuItem.nav-item.active:hover > a {
+  background-color: #51ab55 !important;
+}
+.red.menuItem.nav-item.active:hover > a {
+  background-color: #f44335 !important;
+}
+.blue.menuItem.nav-item.active:hover > a {
+  background-color: #01bcd4 !important;
+}
+.puple.menuItem.nav-item.active:hover > a {
+  background-color: #9c27b0 !important;
+}
+.rose.menuItem.nav-item.active:hover > a {
+  background-color: #e91e62 !important;
+}
+
+.orange.menuItem.nav-item:hover > a {
+  background-color: rgba(252, 151, 19, 0.2) !important;
+}
+.green.menuItem.nav-item:hover > a {
+  background-color: rgba(81, 171, 85, 0.2) !important;
+}
+.red.menuItem.nav-item:hover > a {
+  background-color: rgba(244, 67, 53, 0.2) !important;
+}
+.blue.menuItem.nav-item:hover > a {
+  background-color: rgba(1, 188, 212, 0.2) !important;
+}
+.puple.menuItem.nav-item:hover > a {
+  background-color: rgba(156, 39, 176, 0.2) !important;
+}
+.rose.menuItem.nav-item:hover > a {
+  background-color: rgba(233, 30, 98, 0.2) !important;
+}
