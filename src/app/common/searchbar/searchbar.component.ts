@@ -35,8 +35,6 @@ export class SearchbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedColumn = this.columns.find(item => item.name === this.filter.selectedKeyForSearch);
-    console.log(this.columns);
-    console.log(this.filter);
   }
 
   onChangePhrase(event: Event): void {

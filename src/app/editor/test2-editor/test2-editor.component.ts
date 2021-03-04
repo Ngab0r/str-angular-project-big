@@ -120,11 +120,11 @@ export class Test2EditorComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       params => {
-        console.log(params.key);
+        // console.log(params.key);
         this.selectService(params.key);
         this.testService.get(params.idOrName).subscribe(
           testitem => {
-            console.log(testitem);
+            // console.log(testitem);
             this.editedItemType = testitem || this.model;
           }
         )
@@ -150,7 +150,7 @@ export class Test2EditorComponent implements OnInit {
   }
 
   selectService(paramKey: string): void {
-    console.log(paramKey);
+    // console.log(paramKey);
     switch (paramKey) {
       case 'product':
         this.testService = this.productService;

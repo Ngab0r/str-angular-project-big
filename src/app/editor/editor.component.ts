@@ -48,7 +48,7 @@ export class EditorComponent implements OnInit {
   computeKey(startArray: string, longKey: string) {
     const arr = longKey.split('.')[0].split('[')[0];
     const key = startArray + "['" + arr + "']" + longKey.replace(arr, '');
-    console.log('editedItem(attributes.key) = ' + key);
+    // console.log('editedItem(attributes.key) = ' + key);
     return (key);
   }
 
@@ -152,17 +152,38 @@ export class EditorComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       params => {
         this.selectService(params.page);
-        this.service.get(params.idOrName).subscribe(
-          testitem => {
-            console.log(testitem);
-            this.editedItem = testitem;
-            this.setHtmlInputAttributes();
-            //             let i;
-            //             for(i of this.htmlInputAttributes){
-            //               console.log(i.key);
-            //             }
+        if (params.idOrName != 0) {
+          this.service.get(params.idOrName).subscribe(
+            testitem => {
+              // console.log(testitem);
+              this.editedItem = testitem;
+              this.setHtmlInputAttributes();
+              //             let i;
+              //             for(i of this.htmlInputAttributes){
+              //               console.log(i.key);
+              //             }
+            }
+          )
+        } else {
+          switch (params.page) {
+            case 'product':
+              this.editedItem = new Product();
+              break;
+            case 'category':
+              this.editedItem = new Category();
+              break;
+            case 'customer':
+              this.editedItem = new Customer({});
+              break;
+            case 'order':
+              this.editedItem = new Order();
+              break;
+            case 'bill':
+              this.editedItem = new Bill();
+              break;
           }
-        )
+          this.setHtmlInputAttributes();
+        }
       });
   }
 
@@ -175,11 +196,11 @@ export class EditorComponent implements OnInit {
     let attributes;
     for (attributes of this.htmlInputAttributes) {
       eval(attributes.keyname + "= attributes.key");
-      console.log('setting ' + attributes.keyname + ' to ' + attributes.key);
+      // console.log('setting ' + attributes.keyname + ' to ' + attributes.key);
     }
     if (this.editedItem.id === null || this.editedItem.id === 0) {
       this.service.create(this.editedItem);
-      console.log('router should navigate to ' + this.page);
+      // console.log('router should navigate to ' + this.page);
       this.router.navigate([this.page]);
       this.toastr.success('Succesfully created!', 'Editor message:');
 
@@ -202,7 +223,7 @@ export class EditorComponent implements OnInit {
 
   selectService(page: string): void {
     this.page = page;
-    console.log(page + ' in selectService');
+    // console.log(page + ' in selectService');
     switch (page) {
       case 'bill':
         this.service = this.billService;

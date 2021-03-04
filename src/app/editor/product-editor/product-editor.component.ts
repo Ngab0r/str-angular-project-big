@@ -28,7 +28,7 @@ export class ProductEditorComponent implements OnInit {
       params =>
         this.productService.get(params.idOrName).subscribe(
           productitem => {
-            console.log(productitem);
+            // console.log(productitem);
             this.producttt = productitem || new Product();
           }
         )
