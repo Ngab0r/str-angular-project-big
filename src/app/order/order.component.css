@@ -1,3 +1,19 @@
+.btn-primary {
+  background-color: #01bcd4;
+  border-color: #01bcd4;
+}
+.btn-primary:hover {
+  background-color: #0691a0;
+  border-color: #0691a0;
+}
+.text-primary {
+  color: #01bcd4 !important;
+}
+
+.card .card-header-primary:not(.card-header-icon):not(.card-header-text) {
+  background: linear-gradient(60deg, #01bcd4, #03afc4);
+}
+
 .thumbnail {
   width: 75%;
 }
@@ -6,7 +22,7 @@
   transition: linear 200ms;
 }
 .form-control:hover {
-  border-color: #300035;
+  border-color: #0691a0;
 }
 
 i.sorterSign {
@@ -63,7 +79,7 @@ i.sorterSign {
 }
 
 .text-primary.header-cell:hover {
-  color: #300035 !important;
+  color: #0691a0 !important;
 }
 .mat-header-cell {
   transition: color linear 200ms;
