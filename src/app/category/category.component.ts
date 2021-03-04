@@ -29,12 +29,12 @@ export class CategoryComponent implements OnInit {
     {
       name: 'id',
       title: 'No.',
-      footer: 0
+      footer: ''
     },
     {
       name: 'name',
       title: 'Name',
-      footer: 0
+      footer: 'Total:'
     },
     {
       name: 'description',
@@ -60,6 +60,7 @@ export class CategoryComponent implements OnInit {
     this.categoryList$.subscribe(list => {
       this.categoryList = list;
       this.dataSource = new MatTableDataSource(list);
+      this.columns[2].footer = this.categoryList.length;
     });
   }
 
