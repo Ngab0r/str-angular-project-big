@@ -46,6 +46,16 @@ export class EditorComponent implements OnInit {
 
   //keys: string[] = Object.keys(this.model);
 
+  aVagyAz(str: string): string{
+    if([
+      'a','á','e','é','i','í','o','ó','ö','ő','u','ú','ü','ű',
+      'A','Á','E','É','I','Í','O','Ó','Ö','Ő','U','Ú','Ü','Ű',
+    ].includes(str.charAt(0))){
+      return 'Az';
+    }
+    else return 'A';
+  }
+
 
   // what it does (example):
   // computeKey(customer,'address.zip');
