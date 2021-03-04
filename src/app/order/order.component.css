@@ -78,7 +78,7 @@ i.sorterSign {
   border: dotted 3px transparent;
 }
 
-.text-primary.header-cell:hover {
+.cdk-drag.text-primary.header-cell:hover {
   color: #0691a0 !important;
 }
 .mat-header-cell {

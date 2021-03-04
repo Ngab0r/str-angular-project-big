@@ -62,7 +62,7 @@ i.sorterSign {
   border: dotted 3px transparent;
 }
 
-.text-primary.header-cell:hover {
+.cdk-drag.text-primary.header-cell:hover {
   color: #300035 !important;
 }
 .mat-header-cell {
