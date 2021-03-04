@@ -6,6 +6,12 @@
   background-color: #bc184f;
   border-color: #bc184f;
 }
+
+.btn-primary:focus {
+  background-color: #e91e62 !important;
+  border-color: #e91e62 !important;
+}
+
 .text-primary {
   color: #e91e62 !important;
 }
