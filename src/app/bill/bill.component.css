@@ -84,7 +84,7 @@ i.sorterSign {
 
 .cdk-drag {
   cursor: pointer;
-  border: dotted 3px transparent;
+  border: dotted 0px transparent;
 }
 
 .cdk-drag.text-primary.header-cell:hover {
