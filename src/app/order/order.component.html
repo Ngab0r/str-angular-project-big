@@ -8,7 +8,7 @@
         </div>
         <div class="card-body">
           <app-searchbar [(filter)]="filter" (changeFilter)="changeFilter($event)" [usedFilterType]="'order'"
-            [columns]="columns">
+            [columns]="columns | productPropertyFilter:'order'">
           </app-searchbar>
 
           <button [routerLink]="'/editor/order/0'" class="btn btn-outline-primary w-100"><i
