@@ -57,7 +57,7 @@ export class ProductComponent implements OnInit {
     },
     {
       name: 'catID',
-      title: 'Catedory Id',
+      title: 'Category Id',
       footer: ''
     },
     {
