@@ -21,16 +21,16 @@
         </div>
         <div *ngIf="attributes.inputType === 'text'">
           <input [(ngModel)]="attributes.key" [name]="attributes.text" type="text" class="form-control"
-            [pattern]="attributes.pattern">
+            [pattern]="attributes.pattern" [required]="attributes.isRequired">
           <div [hidden]="productFrom.controls[attributes.text]?.valid" class="text-danger">
-            A(z) {{attributes.text}} {{ attributes.errormsg }}
+           {{aVagyAz(attributes.text)}} '{{attributes.text}}' {{ attributes.errormsg }}
           </div>
         </div>
         <div *ngIf="attributes.inputType === 'number'">
           <input [(ngModel)]="attributes.key" [name]="attributes.text" type="number" class="form-control"
-            [pattern]="attributes.pattern">
+            [pattern]="attributes.pattern" [required]="attributes.isRequired">
           <div [hidden]="productFrom.controls[attributes.text]?.valid" class="text-danger">
-            A(z) {{attributes.text}} {{ attributes.errormsg }}
+            {{aVagyAz(attributes.text)}} '{{attributes.text}}' {{ attributes.errormsg }}
           </div>
         </div>
         <div *ngIf="attributes.inputType === 'checkbox'">
