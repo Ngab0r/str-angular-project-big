@@ -45,13 +45,36 @@ export class EditorComponent implements OnInit {
   // }
 
   //keys: string[] = Object.keys(this.model);
-  computeKey(startArray: string, longKey: string) {
-    const arr = longKey.split('.')[0].split('[')[0];
-    const key = startArray + "['" + arr + "']" + longKey.replace(arr, '');
-    // console.log('editedItem(attributes.key) = ' + key);
-    return (key);
+
+
+  // what it does (example):
+  // computeKey(customer,'address.zip');
+  // returns customer['address']['zip']
+  // the variable itself,
+  // NOT "customer['address']['zip']", the variable name in a string
+  // so we do not need eval()
+  //
+  computeKey(startObj: any, longKey: string) {
+    if (longKey === '') return startObj;
+    //  console.log(longKey);
+    const firstKey = longKey.split('.')[0].split('[')[0];
+    let restKeys = longKey.replace(firstKey, '');
+    if (restKeys === '') {
+      try { return startObj[longKey] }
+      catch (err) {
+        console.log(err);
+        console.log(`${startObj} does not have property ${longKey}`);
+      }
+    }
+    restKeys = restKeys.charAt(0) === '.' ? restKeys.substring(1) : restKeys.substring(1).replace(']', '');
+    return this.computeKey(startObj[firstKey], restKeys);
   }
 
+  // key contains the VALUE of variable to be set (we cannot pass a reference in JS).
+  // That is, key is a copy of the variable. 
+  // If key updates, the variable will not update.
+  // Hence in keyname we store the NAME of the variable in a string.
+  // On submitting (in 'onFormSubmit') we set the variable in keyname to the (updated) value in key.
   setHtmlInputAttributes(): void {
     if (this.page === 'order') {
       this.htmlInputAttributes =

@@ -33,21 +33,42 @@ export class BillComponent implements OnInit {
   columns: any[] = [
     {
       name: 'id',
-      title: 'Id'
+      title: 'Id',
+      footer: 'New:'
     },
     {
       name: 'orderID',
-      title: 'OrderID'
+      title: 'OrderID',
+      footer: 0
     },
     {
       name: 'status',
-      title: 'Status'
+      title: 'Status',
+      footer: 'Paid:'
     },
     {
       name: 'amount',
-      title: 'Amount'
+      title: 'Amount',
+      footer: 0
     },
   ];
+  total: number = 0;
+  
+  calculateNewPaidTotal(): number[]{
+      let totalNew = 0;
+      let paid = 0;
+      
+      for(let i of this.billList){
+          if(i.status === 'new'){
+              totalNew = totalNew + i.amount;
+          }
+          else{
+              paid = paid + i.amount;
+          }
+      }
+      return [totalNew, paid, totalNew+paid];
+}
+  
   filterPipe: FilterPipe = new FilterPipe();
   sorterPipe: SorterPipe = new SorterPipe();
   subscribeForDeleteItem: Bill = new Bill();
@@ -68,6 +89,7 @@ export class BillComponent implements OnInit {
     this.billList$.subscribe(list => {
       this.billList = list;
       this.dataSource = new MatTableDataSource(list);
+      [this.columns[1].footer,this.columns[3].footer,this.total] = this.calculateNewPaidTotal();
     });
   }
 
