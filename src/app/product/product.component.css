@@ -15,6 +15,7 @@
 }
 
 :host ::ng-deep .form-control:focus {
+  box-shadow: none !important;
   background-image: linear-gradient(
       to top,
       #e8433f 2px,
