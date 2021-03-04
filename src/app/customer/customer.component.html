@@ -39,7 +39,7 @@
                                 <button [routerLink]="'/editor/customer/' + [row.id]" class="btn btn-primary"><i
                                         class="fa fa-edit"></i></button>
                             </mat-cell>
-                            <mat-footer-cell *matFooterCellDef class="text-primary footer-cell">Total:</mat-footer-cell>
+                            <mat-footer-cell *matFooterCellDef class="text-primary footer-cell"></mat-footer-cell>
                         </ng-container>
                         <ng-container matColumnDef="delete">
                             <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Delete
@@ -50,7 +50,7 @@
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </mat-cell>
-                            <mat-footer-cell *matFooterCellDef class="text-primary footer-cell">Total:</mat-footer-cell>
+                            <mat-footer-cell *matFooterCellDef class="text-primary footer-cell"></mat-footer-cell>
                         </ng-container>
 
                         <mat-header-row *matHeaderRowDef="displayedColumns" class="tableHeaderRow" #tableHeaderRow>
