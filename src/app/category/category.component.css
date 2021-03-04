@@ -91,6 +91,7 @@ i.sorterSign {
   color: #265626 !important;
 }
 .mat-header-cell {
+  font-size: 1rem;
   transition: color linear 200ms;
 }
 
