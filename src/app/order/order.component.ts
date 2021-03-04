@@ -31,27 +31,33 @@ export class OrderComponent implements OnInit {
   columns: any[] = [
     {
       name: 'id',
-      title: 'No.'
+      title: 'No.',
+      footer: 0
     },
     {
       name: 'customerID',
-      title: 'Customer ID'
+      title: 'Customer ID',
+      footer: 0
     },
     {
       name: 'productID',
-      title: 'Product Id'
+      title: 'Product Id',
+      footer: 0
     },
     {
       name: 'quantity',
-      title: 'Quantity'
+      title: 'Quantity',
+      footer: 0
     },
     {
       name: 'amount',
-      title: 'Amount'
+      title: 'Amount',
+      footer: 0
     },
     {
       name: 'status',
-      title: 'Status'
+      title: 'Status',
+      footer: 0
     },
   ];
   filterPipe: FilterPipe = new FilterPipe();

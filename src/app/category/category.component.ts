@@ -28,15 +28,18 @@ export class CategoryComponent implements OnInit {
   columns: any[] = [
     {
       name: 'id',
-      title: 'No.'
+      title: 'No.',
+      footer: ''
     },
     {
       name: 'name',
-      title: 'Name'
+      title: 'Name',
+      footer: 'Total:'
     },
     {
       name: 'description',
-      title: 'Description'
+      title: 'Description',
+      footer: 0
     },
   ];
   filterPipe: FilterPipe = new FilterPipe();
@@ -57,6 +60,7 @@ export class CategoryComponent implements OnInit {
     this.categoryList$.subscribe(list => {
       this.categoryList = list;
       this.dataSource = new MatTableDataSource(list);
+      this.columns[2].footer = this.categoryList.length;
     });
   }
 

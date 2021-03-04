@@ -32,41 +32,67 @@ export class ProductComponent implements OnInit {
   columns: any[] = [
     {
       name: 'id',
-      title: 'No.'
+      title: 'No.',
+      footer: 'Active:'
     },
     {
       name: 'name',
-      title: 'Name'
+      title: 'Name',
+      footer: 0
     },
     {
       name: 'title',
-      title: 'Title'
+      title: 'Title',
+      footer: ''
     },
     {
       name: 'year',
-      title: 'Year'
+      title: 'Year',
+      footer: 'Inactive:'
     },
     {
       name: 'type',
-      title: 'Type'
+      title: 'Type',
+      footer: 0
     },
     {
       name: 'catID',
-      title: 'Catedory Id'
+      title: 'Catedory Id',
+      footer: ''
     },
     {
       name: 'description',
-      title: 'Description'
+      title: 'Description',
+      footer: 'Total:'
     },
     {
       name: 'price',
-      title: 'Price'
+      title: 'Price',
+      footer: 0
     },
     {
       name: 'active',
-      title: 'Active'
+      title: 'Active',
+      footer: ''
     },
   ];
+
+  calculateActiveInactiveTotal(): number[]{
+    let active = 0;
+    let inactive = 0;
+    
+    for(let i of this.productList){
+        if(i.active){
+            active = active + 1;
+        }
+        else{
+            inactive = inactive + 1;
+        }
+    }
+    return [active, inactive, active + inactive];
+}
+
+
   filterPipe: FilterPipe = new FilterPipe();
   sorterPipe: SorterPipe = new SorterPipe();
   subscribeForDeleteItem: Product = new Product();
@@ -86,6 +112,7 @@ export class ProductComponent implements OnInit {
     this.productList$.subscribe(list => {
       this.productList = list;
       this.dataSource = new MatTableDataSource(list);
+      [this.columns[1].footer,this.columns[4].footer,this.columns[7].footer] = this.calculateActiveInactiveTotal();
     });
   }
 
