@@ -25,7 +25,7 @@ export class TestEditorComponent implements OnInit {
       params =>
         this.testService.get(params.idOrName).subscribe(
           testitem => {
-            console.log(testitem);
+            // console.log(testitem);
             this.testtt = testitem || new Test();
           }
         )

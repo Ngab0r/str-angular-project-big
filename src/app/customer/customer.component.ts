@@ -89,7 +89,6 @@ export class CustomerComponent implements OnInit {
   }
 
   subscribeForDelete(subscribeForDeleteItem: Customer): void {
-    console.log(subscribeForDeleteItem);
     this.subscribeForDeleteItem = subscribeForDeleteItem;
   }
 
@@ -101,7 +100,6 @@ export class CustomerComponent implements OnInit {
 
   changeFilter(filter: Filter): void {
     this.filter = filter;
-    console.log(this.filter.selectedKeyForSearch);
     this.customerList$.subscribe(list => {
       this.customerList = this.filterPipe.transform(list, this.filter.phrase, this.filter.selectedKeyForSearch, this.filter.phrase2);
       this.dataSource = new MatTableDataSource(this.customerList);

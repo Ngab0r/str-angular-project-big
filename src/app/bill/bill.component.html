@@ -27,6 +27,9 @@
               </mat-header-cell>
               <mat-cell *matCellDef="let element">{{ element[column.name] }}
               </mat-cell>
+              <mat-footer-cell *matFooterCellDef class="text-primary footer-cell">
+                {{ column.footer }}
+              </mat-footer-cell>
             </ng-container>
 
             <!-- <ng-container matColumnDef="image">
@@ -42,6 +45,7 @@
                 <button [routerLink]="'/editor/bill/' + [row.id]" class="btn btn-primary"><i
                     class="fa fa-edit"></i></button>
               </mat-cell>
+              <mat-footer-cell *matFooterCellDef class="text-primary footer-cell">Total:</mat-footer-cell>
             </ng-container>
             <ng-container matColumnDef="delete">
               <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Delete </mat-header-cell>
@@ -51,12 +55,15 @@
                   <i class="fa fa-trash"></i>
                 </button>
               </mat-cell>
+              <mat-footer-cell *matFooterCellDef class="text-primary footer-cell">{{ total }}</mat-footer-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns" class="tableHeaderRow" #tableHeaderRow>
             </mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;">
             </mat-row>
+            <mat-footer-row *matFooterRowDef="displayedColumns" class="tableFooterRow" #tableFooterRow>
+            </mat-footer-row>
 
           </mat-table>
         </div>

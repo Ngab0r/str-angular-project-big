@@ -6,12 +6,28 @@
   background-color: #bc184f;
   border-color: #bc184f;
 }
+
+.btn-primary:focus {
+  background-color: #e91e62 !important;
+  border-color: #e91e62 !important;
+}
+
 .text-primary {
   color: #e91e62 !important;
 }
 
 .card .card-header-primary:not(.card-header-icon):not(.card-header-text) {
   background: linear-gradient(60deg, #e91e62, #ce1a56);
+}
+
+:host ::ng-deep .form-control:focus {
+  box-shadow: none !important;
+  background-image: linear-gradient(
+      to top,
+      #e91e62 2px,
+      rgba(156, 39, 176, 0) 2px
+    ),
+    linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px) !important;
 }
 
 .thumbnail {
@@ -75,13 +91,14 @@ i.sorterSign {
 
 .cdk-drag {
   cursor: pointer;
-  border: dotted 3px transparent;
+  border: dotted 0px transparent;
 }
 
 .cdk-drag.text-primary.header-cell:hover {
   color: #a31544 !important;
 }
 .mat-header-cell {
+  font-size: 1rem;
   transition: color linear 200ms;
 }
 

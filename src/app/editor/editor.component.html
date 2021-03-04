@@ -2,34 +2,21 @@
   <div class="col-6 offset-3 mt-5">
     <form #productFrom="ngForm" (ngSubmit)="onFormSubmit(productFrom)" ngNativeValidate novalidate>
       <div class="form-group" *ngFor="let attributes of htmlInputAttributes">
-        <!--
-      <div *ngIf="attributes.subkeys === ''">
--->
         <label [for]="attributes.text">{{ attributes.text }}</label>
-        <!--
-        <div>
-          <input [(ngModel)]="editedItem[attributes.key]" [name]="attributes.text" [type]="attributes.inputType" class="form-control" [pattern]="attributes.pattern">
-          <div [hidden]="productFrom.controls[attributes.text]?.valid || attributes.inputType === 'checkbox' " class="text-danger">
-            A(z) {{attributes.text}} {{ attributes.errormsg }}
+        <!-- <p>this section also works for select:<p>
+        <div *ngIf="attributes.inputType === 'select'" class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ attributes.key }}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a *ngFor="let value of attributes.values" class="dropdown-item" [routerLink]="" (click)="attributes.key = value">{{value}}</a>
           </div>
         </div>
--->
-        <!-- <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton"
-      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      {{ selectedColumn.title }}
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a *ngFor="let key of columns" class="dropdown-item" [routerLink]="" (click)="selectKeyForSearch(key);filterName.value = '';from.value = '';to.value = ''
-          ">{{
-          key.title }}</a>
-  </div>
-</div>
- -->
-
+        -->
         <div *ngIf="attributes.inputType === 'select'">
-          <select [(ngModel)]="attributes.key" [name]="attributes.text" [id]="attributes.text" class="form-control">
-            <option *ngFor="let value of attributes.values" [value]="value"></option>
+          <select [(ngModel)]="attributes.key" [name]="attributes.text" [id]="attributes.text" class="custom-select">
+            <option *ngFor="let value of attributes.values" [value]="value">{{value}}</option>
           </select>
         </div>
         <div *ngIf="attributes.inputType === 'text'">
@@ -49,32 +36,6 @@
         <div *ngIf="attributes.inputType === 'checkbox'">
           <input [(ngModel)]="attributes.key" [name]="attributes.text" type="checkbox" class="form-control">
         </div>
-        <!--
-      </div>
-      <div *ngIf="attributes.subkeys !== ''">
-        <label [for]="attributes.text">{{ attributes.text }}</label>
-        <div *ngIf="attributes.inputType === 'select'">
-          <select [(ngModel)]="editedItem[attributes.key][attributes.subkeys]" [name]="attributes.text" [id]="attributes.text" class="form-control">
-            <option *ngFor="let value of attributes.values" [value]="value"></option>
-          </select>
-        </div>
-        <div *ngIf="attributes.inputType === 'text'">
-          <input [(ngModel)]="editedItem[attributes.key][attributes.subkeys]"  [name]="attributes.text" type="text" class="form-control" [pattern]="attributes.pattern">
-          <div [hidden]="productFrom.controls[attributes.text]?.valid" class="text-danger">
-            A(z) {{attributes.text}} {{ attributes.errormsg }}
-          </div>
-        </div>
-        <div *ngIf="attributes.inputType === 'number'">
-          <input [(ngModel)]="editedItem[attributes.key][attributes.subkeys]" [name]="attributes.text" type="number" class="form-control" [pattern]="attributes.pattern">
-          <div [hidden]="productFrom.controls[attributes.text]?.valid" class="text-danger">
-            A(z) {{attributes.text}} {{ attributes.errormsg }}
-          </div>
-        </div>
-        <div *ngIf="attributes.inputType === 'checkbox'">
-          <input [(ngModel)]="editedItem[attributes.key][attributes.subkeys]" [name]="attributes.text" type="checkbox" class="form-control">
-        </div>
-      </div>
--->
       </div>
       <button [disabled]="updating" class="btn btn-block btn-primary">
         <i *ngIf="!updating" class="fa fa-save"></i>
