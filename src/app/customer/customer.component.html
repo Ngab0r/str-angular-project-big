@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-header card-header-primary">
                     <h4 class="card-title ">Customer</h4>
-                    <p class="card-category">Here you can find all of the Customer</p>
+                    <p class="card-category">Here you can find all of the Customers</p>
                 </div>
                 <div class="card-body">
                     <app-searchbar [(filter)]="filter" (changeFilter)="changeFilter($event)"
@@ -30,8 +30,8 @@
                             </mat-cell>
                             <mat-footer-cell *matFooterCellDef class="text-primary footer-cell">
                                 {{ column.footer }}
-                              </mat-footer-cell>
-                            </ng-container>
+                            </mat-footer-cell>
+                        </ng-container>
 
                         <ng-container matColumnDef="edit">
                             <mat-header-cell *matHeaderCellDef class="text-primary header-cell"> Edit </mat-header-cell>
@@ -54,7 +54,7 @@
                         </ng-container>
 
                         <mat-header-row *matHeaderRowDef="displayedColumns" class="tableHeaderRow" #tableHeaderRow>
-                        </mat-header-row> 
+                        </mat-header-row>
                         <mat-row *matRowDef="let row; columns: displayedColumns;">
                         </mat-row>
                         <mat-footer-row *matFooterRowDef="displayedColumns" class="tableFooterRow" #tableFooterRow>
