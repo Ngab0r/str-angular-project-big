@@ -33,7 +33,7 @@ export class ProductComponent implements OnInit {
     {
       name: 'id',
       title: 'No.',
-      footer: 0
+      footer: 'Active:'
     },
     {
       name: 'name',
@@ -43,12 +43,12 @@ export class ProductComponent implements OnInit {
     {
       name: 'title',
       title: 'Title',
-      footer: 0
+      footer: ''
     },
     {
       name: 'year',
       title: 'Year',
-      footer: 0
+      footer: 'Inactive:'
     },
     {
       name: 'type',
@@ -58,12 +58,12 @@ export class ProductComponent implements OnInit {
     {
       name: 'catID',
       title: 'Catedory Id',
-      footer: 0
+      footer: ''
     },
     {
       name: 'description',
       title: 'Description',
-      footer: 0
+      footer: 'Total:'
     },
     {
       name: 'price',
@@ -73,9 +73,26 @@ export class ProductComponent implements OnInit {
     {
       name: 'active',
       title: 'Active',
-      footer: 0
+      footer: ''
     },
   ];
+
+  calculateActiveInactiveTotal(): number[]{
+    let active = 0;
+    let inactive = 0;
+    
+    for(let i of this.productList){
+        if(i.active){
+            active = active + 1;
+        }
+        else{
+            inactive = inactive + 1;
+        }
+    }
+    return [active, inactive, active + inactive];
+}
+
+
   filterPipe: FilterPipe = new FilterPipe();
   sorterPipe: SorterPipe = new SorterPipe();
   subscribeForDeleteItem: Product = new Product();
@@ -95,6 +112,7 @@ export class ProductComponent implements OnInit {
     this.productList$.subscribe(list => {
       this.productList = list;
       this.dataSource = new MatTableDataSource(list);
+      [this.columns[1].footer,this.columns[4].footer,this.columns[7].footer] = this.calculateActiveInactiveTotal();
     });
   }
 
