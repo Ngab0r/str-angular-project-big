@@ -31,29 +31,56 @@ export class OrderComponent implements OnInit {
   columns: any[] = [
     {
       name: 'id',
-      title: 'No.'
+      title: 'No.',
+      footer: 'New:'
     },
     {
       name: 'customerID',
-      title: 'Customer ID'
+      title: 'Customer ID',
+      footer: 0
     },
     {
       name: 'productID',
-      title: 'Product Id'
+      title: 'Product Id',
+      footer: 'Paid:'
     },
     {
       name: 'quantity',
-      title: 'Quantity'
+      title: 'Quantity',
+      footer: 0
     },
     {
       name: 'amount',
-      title: 'Amount'
+      title: 'Amount',
+      footer: 'Shipped:'
     },
     {
       name: 'status',
-      title: 'Status'
+      title: 'Status',
+      footer: 0
     },
   ];
+  total: number = 0;
+  
+  calculateNewPaidShippedTotal(): number[]{
+      let totalNew = 0;
+      let paid = 0;
+      let shipped = 0;
+      
+      for(let i of this.orderList){
+        if(i.status === 'new'){
+          totalNew = totalNew + i.amount;
+        }
+        if(i.status === 'paid'){
+        paid = paid + i.amount;
+        }
+        else{
+              shipped = shipped + i.amount;
+          }
+      }
+      return [totalNew, paid, shipped, totalNew+paid+shipped];
+}
+  
   filterPipe: FilterPipe = new FilterPipe();
   sorterPipe: SorterPipe = new SorterPipe();
   subscribeForDeleteItem: Order = new Order();
@@ -73,6 +100,7 @@ export class OrderComponent implements OnInit {
     this.orderList$.subscribe(list => {
       this.orderList = list;
       this.dataSource = new MatTableDataSource(list);
+      [this.columns[1].footer,this.columns[3].footer,this.columns[5].footer,this.total] = this.calculateNewPaidShippedTotal();
     });
   }
 

@@ -12,6 +12,26 @@
   border-color: #e91e62 !important;
 }
 
+.btn-outline-primary {
+  color: #e91e62;
+  border-color: #e91e62;
+}
+.btn-outline-primary:hover {
+  background-color: rgba(188, 24, 79, 0.8);
+  border-color: #bc184f;
+  color: white;
+}
+
+.btn-outline-primary:focus {
+  background-color: #e91e62 !important;
+  border-color: #e91e62 !important;
+}
+
+:host ::ng-deep .dropdown-menu .dropdown-item:hover,
+:host ::ng-deep .dropdown-menu a:hover .thumbnail {
+  background-color: #bc184f;
+}
+
 .text-primary {
   color: #e91e62 !important;
 }

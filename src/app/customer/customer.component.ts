@@ -32,41 +32,66 @@ export class CustomerComponent implements OnInit {
   columns: Columns[] = [
     {
       name: 'id',
-      title: 'No.'
+      title: 'No.',
+      footer: ''
     },
     {
       name: 'firstName',
-      title: 'First Name'
+      title: 'First Name',
+      footer: 'Active:'
     },
     {
       name: 'lastName',
-      title: 'Last Name'
+      title: 'Last Name',
+      footer: 0
     },
     {
       name: 'email',
-      title: 'Email'
+      title: 'Email',
+      footer: ''
     },
     {
       name: 'address.zip',
-      title: 'Address Zip'
+      title: 'Address Zip',
+      footer: 'Inactive:'
     },
     {
       name: 'address.country',
-      title: 'Address Country'
+      title: 'Address Country',
+      footer: 0
     },
     {
       name: 'address.city',
-      title: 'Address City'
+      title: 'Address City',
+      footer: ''
     },
     {
       name: 'address.street',
-      title: 'Address Street'
+      title: 'Address Street',
+      footer: 'Total:'
     },
     {
       name: 'active',
-      title: 'Active'
+      title: 'Active',
+      footer: 0
     },
   ];
+
+  calculateActiveInactiveTotal(): number[]{
+    let active = 0;
+    let inactive = 0;
+    
+    for(let i of this.customerList){
+        if(i.active){
+            active = active + 1;
+        }
+        else{
+            inactive = inactive + 1;
+        }
+    }
+    return [active, inactive, active + inactive];
+}
+
   filterPipe: FilterPipe = new FilterPipe();
   sorterPipe: SorterPipe = new SorterPipe();
   subscribeForDeleteItem: Customer = new Customer({});
@@ -85,6 +110,7 @@ export class CustomerComponent implements OnInit {
     this.customerList$.subscribe(list => {
       this.customerList = list;
       this.dataSource = new MatTableDataSource(list);
+      [this.columns[2].footer,this.columns[5].footer,this.columns[8].footer] = this.calculateActiveInactiveTotal();
     });
   }
 

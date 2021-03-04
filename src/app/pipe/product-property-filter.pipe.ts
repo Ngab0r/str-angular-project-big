@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ConfigService } from '../service/config.service';
+import { Columns } from '../model/columns';
 
 @Pipe({
   name: 'productPropertyFilter'
@@ -7,15 +8,12 @@ import { ConfigService } from '../service/config.service';
 export class ProductPropertyFilterPipe implements PipeTransform {
 
 
-  constructor(private config: ConfigService) { }
+  constructor() { }
 
-  transform(properties: string[], filterFunction: string) {
+  transform(properties: Columns[], filterFunction: string) {
     switch (filterFunction) {
-      case 'search':
-        return properties.filter(item => this.config.searchByProperties.includes(item));
-
       case 'order':
-        return properties.filter(item => this.config.orderByProperties.includes(item));
+        return properties.filter(item => item.name !== 'productID' && item.name !== 'quantity');
 
       case 'admin':
         return properties.filter(item => true);

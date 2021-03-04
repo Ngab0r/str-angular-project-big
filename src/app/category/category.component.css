@@ -10,6 +10,19 @@
   background-color: #48a44b !important;
   border-color: #48a44b !important;
 }
+.btn-outline-primary {
+  color: #48a44b;
+  border-color: rgba(72, 164, 75, 0.8);
+}
+.btn-outline-primary:hover {
+  background-color: #265626;
+  border-color: #265626;
+  color: white;
+}
+.btn-outline-primary:focus {
+  color: #48a44b !important;
+  border-color: #48a44b !important;
+}
 
 .text-primary {
   color: #48a44b !important;
@@ -28,9 +41,9 @@
     ),
     linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px) !important;
 }
-
-.thumbnail {
-  width: 75%;
+:host ::ng-deep .dropdown-menu .dropdown-item:hover,
+:host ::ng-deep .dropdown-menu a:hover .thumbnail {
+  background-color: #265626;
 }
 
 .form-control {
