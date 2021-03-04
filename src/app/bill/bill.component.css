@@ -27,6 +27,11 @@
   border-color: #e91e62 !important;
 }
 
+:host ::ng-deep .dropdown-menu .dropdown-item:hover,
+:host ::ng-deep .dropdown-menu a:hover .thumbnail {
+  background-color: #bc184f;
+}
+
 .text-primary {
   color: #e91e62 !important;
 }

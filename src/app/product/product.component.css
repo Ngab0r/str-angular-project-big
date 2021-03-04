@@ -44,6 +44,11 @@
     linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px) !important;
 }
 
+:host ::ng-deep .dropdown-menu .dropdown-item:hover,
+:host ::ng-deep .dropdown-menu a:hover .thumbnail {
+  background-color: #e50c09;
+}
+
 .thumbnail {
   width: 75%;
 }
